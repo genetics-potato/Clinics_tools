@@ -25,5 +25,16 @@ dV/dt =     pI − cV     (3)
 ###### Parameters
 
 + **λ = U<sub>0</sub>ρ**
++ **TABLE 1 | Estimates of infection parameters<sup>*</sup>.**
+|Parameters (units)|Best fit<sup>**</sup>                                 |Bootstrap estimates                  |
+|------------------|------------------------------------------------------|-------------------------------------|
+|                  |                                                      |2.5% quantile, Median, 97.5% quantile|
+|β                 |[day<sup>−1</sup>(ffu/ml)<sup>−1</sup>10<sup>−7</sup>]|``1.91  1.78  4.06 261.95``          |
+|p                 |(ffu/ml day<sup>−1</sup>cell<sup>−1</sup>)            |`` 378 31.80 62.91 580.69``          |
+|c                 |(day<sup>−1</sup>)                                    |``8.02  0.18  1.05  18.76``          |
+|t<sub>inf</sub>   |(hours)                                               |``5.64  1.68  9.49  10.79``          |
+
+\*Note that these parameter should be interpreted with the discussed identifiability problems.
+\*\*Values obtained from optimization procedure to the low MOI viral titer presentedin Halfmann et al. (2008).
 
 ###### Initial Value
