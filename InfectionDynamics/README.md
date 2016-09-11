@@ -57,9 +57,19 @@ Nowadays, infections by viral pathogens are one of the biggest health threats to
 
 ![](./images/Viral_infection_model.png)
 > **Fig. 1. Viral infection model.** Host cells can be either susceptible(``U``) or infected (``I``). Virus (``V``) infects susceptible cells with constant rate. Once cells are infected, they release virus at rate p and virus particles are cleared with rate ``c``. Infected cells can die with rate either by cytopathic viral effects or by the immune response.
-
+>
 ```
 U' =    - UV     (1)
 I' = UV − I      (2)
 V' = pI − cV     (3)
 ```
+
+###### Parameters
+
+![](./images/Best_parameter_fitting.png)
+> **Fig.2. Best parameter fitting.** Cell dynamics are shown in panel(a). Viral titer data from Toapanta and Ross[2009] and simulation results are shown in panel(b). Best fitting values are β=7.22×10<sup>−7</sup>, p=9.95, c=7.12 and δ=3.07. Experiments showed that the viral titer was not detectable at day 9 for 6 mice(detection levels,less than 50 PFU/ml, are shown with a horizontal dashed line in panel(b)).
+
+###### Initial Value
++ For initial conditions in our biological problem, the estimated number of epithelial cells(**U<sub>0</sub>**) can be experimentally fixed, which is considered as 10<sup>7</sup> cells reported by Toapanta and Ross[2009].
++ Initial values for infected cells(**I<sub>0</sub>**) are taken as zero.
++ The initial viral titre **V<sub>0</sub>** in the majority of the works is constrained to be below the detection limit(less than 50 ffu/ml). Previous modelling works suggests using half of the detection limits or less[Thi´ebautetal.,2006].
