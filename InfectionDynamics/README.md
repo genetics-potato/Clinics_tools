@@ -26,6 +26,7 @@ dV/dt =     pI − cV     (3)
 
 + **λ = U<sub>0</sub>ρ**
 + **TABLE 1 | Estimates of infection parameters<sup>*</sup>.**
+
 |Parameters (units)|Best fit<sup>**</sup>                                 |Bootstrap estimates                  |
 |------------------|------------------------------------------------------|-------------------------------------|
 |                  |                                                      |2.5% quantile, Median, 97.5% quantile|
