@@ -1,4 +1,4 @@
-### Ebola virus infection modeling and identifiability problems
+### 1. Ebola virus infection modeling and identifiability problems
 
 + **DOI** [10.3389/fmicb.2015.00257]()
 + **ISSN** 1664-302X
@@ -13,3 +13,17 @@ Mathematical modelling of the EBOV dynamics can be instrumental to interpret Ebo
 
 ![](./images/Schematic_representation_of_the model_for_EBOV_infection.png)
 > **Figure 2. Schematic representation of the model for EBOV infection.** Target cells (U) are replenished with rate λ and die with rate ρ. Virus (V) infects target cells (U) with rate β. Infected cells are cleared with rate δ. Once cells are productively infected (I), they release virus at rate p and virus particles are cleared with rate c.
+
+The EBOV infection model is considered as follows:
+
+```vbnet
+dU/dt = λ − ρU − βUV    (1)
+dI/dt =     βUV − δI    (2)
+dV/dt =     pI − cV     (3)
+```
+
+###### Parameters
+
++ **λ = U<sub>0</sub>ρ**
+
+###### Initial Value
