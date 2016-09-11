@@ -41,11 +41,19 @@ dV/dt =     pI − cV     (3)
 
 ### 2. Identifiability Challenges in Mathematical Models of Viral Infectious Diseases
 
++ **ISSN** 2405-8963
++ **DOI** [10.1016/j.ifacol.2015.12.135](http://dx.doi.org/10.1016/j.ifacol.2015.12.135)
+
+###### Abstract
+Nowadays, infections by viral pathogens are one of the biggest health threats to mankind. The development of new avenues of thinking to integrate the complexity of infectious diseases and the immune system is urgently needed. Recently mathematical modelling has emerged as a tool to interpret experimental results on quantitative grounds providing relevant insights to understand several infectious diseases. Nevertheless, modelling the complex mechanisms between viruses and the immune system can result in models with a large number of parameters to be estimated. Furthermore, experimental measurements have the problem to be sparse (in time) and highly noisy. Therefore, structural and practical identifiability are key obstacles to overcome towards mathematical models with predictive value. This paper addresses the identifiability limitations in the most common mathematical model to represent viral infections. Additionally, numerical simulations reveal how initial conditions of differential equations and fixing parameter values can alter the profile likelihood.
+
+**Keywords:** parameter estimation; identifiability; viral infections
+
 ![](./images/Viral_infection_model.png)
-> **Fig. 1. Viral infection model.** Host cells can be either susceptible(``U``) or infected (``I``). Virus (``V``) infects susceptible cells with constant rate. Once cells are infected, they release virus at rate p and virus particles are cleared with rate ``c``. Infected cells can die with rate either by cytopathic viral effects or by the immune response.
+> **Fig. 1. Viral infection model.** Host cells can be either susceptible(``U``) or infected (``I``). Virus (``V``) infects susceptible cells with constant rate. Once cells are infected, they release virus at rate p and virus particles are cleared with rate ``c``. Infected cells can die with rate either by cytopathic viral effects or by the immune response.
 
 ```
-U' =    − UV     (1)
-I' = UV − I     (2)
-V' = pI − cV    (3)
+U' =    - UV     (1)
+I' = UV − I      (2)
+V' = pI − cV     (3)
 ```
