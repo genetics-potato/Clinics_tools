@@ -1,6 +1,6 @@
 ### 1. Ebola virus infection modeling and identifiability problems
 
-+ **DOI** [10.3389/fmicb.2015.00257]()
++ **DOI** [10.3389/fmicb.2015.00257](https://www.doi.org/10.3389/fmicb.2015.00257)
 + **ISSN** 1664-302X
 
 ###### ABSTRACT
