@@ -1,4 +1,4 @@
-### 1. Ebola virus infection modeling and identifiability problems
+## 1. Ebola virus infection modeling and identifiability problems
 
 + **DOI** [10.3389/fmicb.2015.00257](https://www.doi.org/10.3389/fmicb.2015.00257)
 + **ISSN** 1664-302X
@@ -24,7 +24,9 @@ dV/dt =     pI − cV     (3)
 
 ###### Parameters
 
++ The parameter ``ρ`` is fixed from literature as 0.001day<sup>−1</sup> (Moehleretal.,2005). The effect of fixing this value on the model output is evaluated with a sensitivity analysis.
 + **λ = U<sub>0</sub>ρ**
++ There is experimental evidence that the half-life of epithelium cells in lung is 17–18 months in average(Rawlins and Hogan,2008). In view of this, the infected cell death rate(δ) is fixed at 10<sup>−3</sup>.
 + **TABLE 1 | Bootstrap estimates of infection parameters<sup>*</sup>.**
 
 |Parameters (units)|Best fit<sup>**</sup>                       |Bootstrap estimates|2.5% quantile|Median|97.5% quantile|
@@ -39,7 +41,11 @@ dV/dt =     pI − cV     (3)
 
 ###### Initial Value
 
-### 2. Identifiability Challenges in Mathematical Models of Viral Infectious Diseases
++ The initial number of susceptible cells(**U<sub>0</sub>**) can be taken from the experiment in Halfmann et al. (2008) as 5 × 10<sup>5</sup>.
++ The initial value for infected cells(**I<sub>0</sub>**) is set to zero. The viral titer in Halfmann et al.(2008) is measured in foci forming units per milliliter(ffu/ml).
++ The initial viral load(**V<sub>0</sub>**) is estimated from the data using the fractional polynomial model of second order(Royston and Altman, 1994). The best model based on the *Akaike Information Criterion(``AIC``)* is presented in Figure3,  providing an estimate of 9 ffu/ml for **V<sub>0</sub>**.
+
+## 2. Identifiability Challenges in Mathematical Models of Viral Infectious Diseases
 
 + **ISSN** 2405-8963
 + **DOI** [10.1016/j.ifacol.2015.12.135](http://dx.doi.org/10.1016/j.ifacol.2015.12.135)
