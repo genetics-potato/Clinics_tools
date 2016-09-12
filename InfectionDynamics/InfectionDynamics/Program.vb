@@ -1,5 +1,6 @@
 ﻿Imports RDotNET.Extensions.VisualBasic
 Imports RDotNET.Extensions.VisualBasic.API.base
+Imports RDotNET.Extensions.VisualBasic.API.utils
 Imports RDotNET.Extensions.Bioinformatics.deSolve.API
 Imports RDotNET.Extensions.Bioinformatics.deSolve
 
@@ -44,7 +45,7 @@ Module Program
                       parms:=NULL,
                       method:=integrator.rk4)
 
-        Call $"plot({out})".ζ
+        Call write.csv(out, "x:\ebola_test.csv")
 
         Pause()
     End Sub
