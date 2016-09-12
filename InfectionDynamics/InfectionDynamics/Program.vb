@@ -38,9 +38,13 @@ Module Program
         require("deSolve")
 
         Dim times = seq([from]:=0, [to]:=5.6, by:=0.01)
-        Dim out = ode(y:=yini, times:=times, func:=model, parms:=Null, method:=integrator.rk4)
+        Dim out = ode(y:=yini,
+                      times:=times,
+                      func:=model,
+                      parms:=NULL,
+                      method:=integrator.rk4)
 
-        Call out.ζ
+        Call $"plot({out})".ζ
 
         Pause()
     End Sub
