@@ -42,20 +42,20 @@ U0 <- 5 * (10^5)
 # The parameter ? is fixed from liter-
 # ature as 0.001 day-1 (Moehleretal.,2005).
 # </summary>
-row <- 0.001
+rho <- 0.001
 
 # <summary>
 # Note that the condition ? = U0? should be satisfied to
 # guarantee homeostasis in the absence of viral infection,such that
 # only ? is a parameter to be determined.
 # </summary>
-lambda <- row * U0
+lambda <- rho * U0
 
 yini <- c(U=U0,I=0, V=9)
 
 Lorenz <- function (t, y, parms) {
  with(as.list(y), {
-    dU <- lambda - row * U - beta * U * V
+    dU <- lambda - rho * U - beta * U * V
     dI <- beta * U * V - d * I
     dV <- p * I - c * V
 	
