@@ -1,4 +1,7 @@
 ﻿Imports RDotNET.Extensions.VisualBasic
+Imports RDotNET.Extensions.VisualBasic.API.base
+Imports RDotNET.Extensions.Bioinformatics.deSolve.API
+Imports RDotNET.Extensions.Bioinformatics.deSolve
 
 Module Program
 
@@ -17,7 +20,11 @@ Module Program
         ' The initial number of susceptible cells(U0) can be taken from the experiment in Half mannetal. (2008) as 5 × 10^5.
         Dim yini = "c(U=U0, I=0, V=9)"
         Dim model = [function](
-            {"t", "y", "params"},
+            {
+                "t",
+                "y",
+                "params"
+            },
  _
              "with(as.list(y), {
     
@@ -28,14 +35,14 @@ Module Program
                 list(c(dU, dI, dV))
 })")
 
-        Dim times = seq(from = 0, To = 5.6, by = 0.01)
-        out   <- ode(y = yini, times = times, func = Lorenz, parms = NULL)
+        require("deSolve")
 
-        Dim fU As New ODEs.ODE With {.df = AddressOf dU, .SetY = Sub(x) U = x, .y0 = U0}
-        Dim fI As New ODEs.ODE With {.df = AddressOf dI, .SetY = Sub(x) I = x, .y0 = 0R}
-        Dim fV As New ODEs.ODE With {.df = AddressOf dV, .SetY = Sub(x) V = x, .y0 = 9}
-        Dim solver As New ODEs With {.ODEs = {fU, fI, fV}}
-        Call solver.Solve(100, 0, 6)
+        Dim times = seq([from]:=0, [to]:=5.6, by:=0.01)
+        Dim out = ode(y:=yini, times:=times, func:=model, parms:=Null, method:=integrator.rk4)
+
+        Call out.ζ
+
+        Pause()
     End Sub
 
     ''' <summary>
@@ -55,7 +62,7 @@ Module Program
     ''' infection rate(β),a replication rate of at least 31.8 ffu/ml cell−1
     ''' day−1 is still needed to achieve a good fit of the viral replication
     ''' kinetics in Figure3.
-    ''' </summary>
+    ''' </summary>G:\R.Bioinformatics\RDotNET.Extensions.VisualBasic\API\utils\
     Const beta As Double = 1.91 '31.8
 
     ''' <summary>
