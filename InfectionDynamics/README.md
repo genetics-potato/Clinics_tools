@@ -3,14 +3,18 @@ The first mathematical model to describe IAV dynamics was developed in 1976 by L
 the IAV infection dynamics was presented by Baccam et al., which adopted the well-known **target cell model**.
 
 ![](./images/TargetCellModel.png)
+
 **Figure 2. Target cell model.**
+
 + (**Left**) IAV (``V``) infects susceptible cells (``U``) with rate ``β``. Infected cells are cleared with rate ``δ``. Once cells are productively infected (``I``), they release virus at rate ``p`` and virus particles are cleared at rate ``c``. The symbol ``Φ`` represents clearance;
-	```
-    U' = -βUV
-	I' =  βUV - δI
-	V' =  pI  - cV
-    ```
 + (Right) Computational simulations of the target cell model. Parameter values used for model simulation are taken from [26]. The susceptible cells (red line) are rapidly infected while the virus (black line) and infected cells (blue line) peak at day one approximately. The viral growth is limited by the number of susceptible cells, decreasing the viral load and the number of infected cells to undetectable levels.
+
+###### Target Cell Model
+```
+U' = -βUV
+I' =  βUV - δI
+V' =  pI  - cV
+```
 
 Several mathematical works have tried to model the eclipse phase _in vivo_ and _in vitro_. These models have aimed at representing the time frame of the infection more adequately. This has resulted in an additional state, in which newly infected cells rest in a latent phase before becoming productively infected cells (``I``). Thus, the model with the eclipse phase can be represented as follows:
 
@@ -27,7 +31,43 @@ where ``E'`` represents the cells in the eclipse phase, which can become product
 
 > "Modeling Influenza Virus Infection: A Roadmap for Influenza Research". Viruses 2015, 7, 5274-5304; ``doi:10.3390/v7102875``
 
-## 1. Ebola virus infection modeling and identifiability problems
+## 1. Kinetics of influenza A virus infection in humans
+
++ **DOI: ** doi:10.3390/v7102875
+
+###### Abstract
+Currently, little is known about the viral kinetics of influenza A during infection within an individual. We utilize a series of mathematical models of increasing complexity, which incorporate target cell limitation and the innate interferon response, to examine influenza A virus kinetics in the upper respiratory tracts of experimentally infected adults. The models were fit to data from an experimental H1N1 influenza A/Hong Kong/123/77 infection and suggest that it is important to include the eclipse phase of the viral life cycle in viral dynamic models. Doing so, we estimate that after a delay of ~6 h, infected cells begin producing influenza virus and continue to do so for ~5 h. The average lifetime of infected cells is ~11 h, and the half-life of free infectious virus is ~3 h. We calculated the basic reproductive number, R0, which indicated that a single infected cell could produce ~22 new productive infections. This suggests that antiviral treatments have a large hurdle to overcome in moderating symptoms and limiting infectiousness and that treatment has to be initiated as early as possible. For about 50% of patients, the curve of viral titer versus time has two peaks. This bimodal behavior can be explained by incorporating the antiviral effects of interferon into the model. Our model also compared well to an additional data set on viral titer after experimental infection and treatment with the neuraminidase inhibitor zanamivir, which suggests that such models may prove useful in estimating the efficacies of different antiviral therapies for influenza A infection.
+
+#### A target cell-limited model
+
+In the simplest model, influenza A virus infection is limited by the availability of susceptible target (epithelial) cells rather than the effects of the immune response. A model of acute viral infection that incorporates target cell limitation can be described by the following differential equations:
+
+```
+dT/dt = -βTV
+dI/dt =  βTV - δI
+dV/dt =  pI  - cV
+```
+where T is the number of uninfected target cells, I is the number of productively infected cells, and V is the infectiousviral titer expressed in TCID50/ml of nasal wash. We assume that infection is initiated by the introduction of virus into the upper respiratory tract at a concentration equivalent to V0 TCID50/ml of nasal wash. Susceptible cells become infected by virus at rate TV, where  is the rate constant characterizing infection.
+Virally infected cells, I, by shedding virus increase viral titers at an average rate of p per cell and die at a rate of  per cell, where 1/ is the average life span of a productively infected cell. Free virus is cleared at a rate of c per day. The effects of immune responses are not explicitly described in this simple model, but they are implicitly included in the death rate of infected cells () and the clearance rate of virus (c). The reduction in viral titer due to binding and infection of target cells at rate TV makes little impact on the amount of free virus and was neglected. The mechanism of virion clearance is unknown and may involve mucociliary clearance as well as binding of virions to cells and to respiratory secretions, such as mucins.
+
+#### Parameters
+
+###### TABLE 2. Patient-specific best-fit parameter values for the target cell-limited model with no delay (equations 1 through 3)a
+Patient V0 (TCID50/ml)  [(TCID50/ml)1 ·
+d1] p (TCID50/ml · d1) c (d1) t1/2 (h)  (d1) 1/ (h) R0 SSR (TCID50/ml)2
+1 3.5  101 3.4  105 7.9  103 3.3 5.0 3.4 7.1 9.6 4.6
+2 1.4  103 1.6  104 4.1  103 2.1 7.7 11.2 2.1 11.2 7.0
+3 1.0  102 1.3  104 3.2  103 2.1 7.9 2.1 11.4 37.7 8.3
+4 9.1  101 6.3  106 4.2  102 3.1 5.4 2.8 8.7 12.4 4.0
+5 4.3  101 2.3  105 1.0  102 4.2 4.0 5.1 4.7 4.4 9.0
+6 3.3  101 3.8  106 7.1  102 3.6 4.6 3.6 6.7 8.3 13.6
+Avg 9.3  102 2.7  105 1.2  102 3.0 5.6 4.0 6.0 11.1 7.1
+95% CI 1.4  102–6.1  101 8.8  106–8.3  105 4.8  103–3.0  102 2.4–3.6 4.6–6.9 2.6–6.1 3.9–9.2 6.6–18.5 5.1–9.9
+a For each patient, the best-fit initial virus titer (V0), infection rate constant (), average rate of increase of viral titer per infected cell (p), viral clearance rate (c),
+half-life of free virus (t1/2), infected-cell lifespan (1/), basic reproductive number (R0), and sum of square residuals (SSR) are given along with their geometric average
+and geometric 95% CI. The parameter T0 was held fixed at a value of 4  108 cells.
+
+## 2. Ebola virus infection modeling and identifiability problems
 
 + **DOI** [10.3389/fmicb.2015.00257](https://www.doi.org/10.3389/fmicb.2015.00257)
 + **ISSN** 1664-302X
@@ -74,7 +114,7 @@ dV/dt =     pI − cV     (3)
 + The initial value for infected cells(**I<sub>0</sub>**) is set to zero. The viral titer in Halfmann et al.(2008) is measured in foci forming units per milliliter(ffu/ml).
 + The initial viral load(**V<sub>0</sub>**) is estimated from the data using the fractional polynomial model of second order(Royston and Altman, 1994). The best model based on the *Akaike Information Criterion(``AIC``)* is presented in Figure3,  providing an estimate of 9 ffu/ml for **V<sub>0</sub>**.
 
-## 2. Identifiability Challenges in Mathematical Models of Viral Infectious Diseases
+## 3. Identifiability Challenges in Mathematical Models of Viral Infectious Diseases
 
 + **ISSN** 2405-8963
 + **DOI** [10.1016/j.ifacol.2015.12.135](http://dx.doi.org/10.1016/j.ifacol.2015.12.135)
