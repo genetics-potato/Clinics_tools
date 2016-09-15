@@ -14,10 +14,10 @@ Module Program
 
         Dim result = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(1000, 0, 8)
 
-        result.y("V") = New NamedValue(Of Double()) With {
-            .Name = "V",
-            .x = -Log(New Vector(result.y("V").x))
-        }
+        'result.y("V") = New NamedValue(Of Double()) With {
+        '    .Name = "V",
+        '    .x = -Log(New Vector(result.y("V").x))
+        '}
 
         Call result.DataFrame.Save("./Kinetics_of_influenza_A_virus_infection_in_humans.csv", Encodings.ASCII)
         Call Scatter.Plot(result.FromODEs).SaveAs("./Kinetics_of_influenza_A_virus_infection_in_humans.png")
