@@ -5,9 +5,25 @@ the IAV infection dynamics was presented by Baccam et al., which adopted the wel
 ![](./images/TargetCellModel.png)
 **Figure 2. Target cell model.**
 + (**Left**) IAV (``V``) infects susceptible cells (``U``) with rate ``β``. Infected cells are cleared with rate ``δ``. Once cells are productively infected (``I``), they release virus at rate ``p`` and virus particles are cleared at rate ``c``. The symbol ``Φ`` represents clearance;
+	```
+    U' = -βUV
+	I' =  βUV - δI
+	V' =  pI  - cV
+    ```
 + (Right) Computational simulations of the target cell model. Parameter values used for model simulation are taken from [26]. The susceptible cells (red line) are rapidly infected while the virus (black line) and infected cells (blue line) peak at day one approximately. The viral growth is limited by the number of susceptible cells, decreasing the viral load and the number of infected cells to undetectable levels.
 
-**[26]** Baccam, P.; Beauchemin, C.A.A.; Macken, C.A.A.; Hayden, F.G.; Perelson, A.S. **Kinetics of influenza A virus infection in humans**. J. Virol. 2006, 80, 7590–7599.
+Several mathematical works have tried to model the eclipse phase _in vivo_ and _in vitro_. These models have aimed at representing the time frame of the infection more adequately. This has resulted in an additional state, in which newly infected cells rest in a latent phase before becoming productively infected cells (``I``). Thus, the model with the eclipse phase can be represented as follows:
+
+```
+U' = -βUV
+E' =  βUV - kE'
+I' =  kE' - δI
+V' =  pI  - cV
+```
+
+where ``E'`` represents the cells in the eclipse phase, which can become productively infected at rate ``k``.
+
+**[26]** _Baccam, P.; Beauchemin, C.A.A.; Macken, C.A.A.; Hayden, F.G.; Perelson, A.S._ **Kinetics of influenza A virus infection in humans**. J. Virol. 2006, 80, 7590–7599.
 
 > "Modeling Influenza Virus Infection: A Roadmap for Influenza Research". Viruses 2015, 7, 5274-5304; ``doi:10.3390/v7102875``
 
