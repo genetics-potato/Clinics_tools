@@ -1,3 +1,16 @@
+# In Vivo Systems Models Summary
+The first mathematical model to describe IAV dynamics was developed in 1976 by Larson et al.. The model was fitted to viral titer data of mice infected with ``IAV (H3N2)``. After thirty years without modeling efforts, a work that described
+the IAV infection dynamics was presented by Baccam et al., which adopted the well-known **target cell model**.
+
+![](./images/TargetCellModel.png)
+**Figure 2. Target cell model.**
++ (**Left**) IAV (``V``) infects susceptible cells (``U``) with rate ``β``. Infected cells are cleared with rate ``δ``. Once cells are productively infected (``I``), they release virus at rate ``p`` and virus particles are cleared at rate ``c``. The symbol ``Φ`` represents clearance;
++ (Right) Computational simulations of the target cell model. Parameter values used for model simulation are taken from [26]. The susceptible cells (red line) are rapidly infected while the virus (black line) and infected cells (blue line) peak at day one approximately. The viral growth is limited by the number of susceptible cells, decreasing the viral load and the number of infected cells to undetectable levels.
+
+**[26]** Baccam, P.; Beauchemin, C.A.A.; Macken, C.A.A.; Hayden, F.G.; Perelson, A.S. **Kinetics of influenza A virus infection in humans**. J. Virol. 2006, 80, 7590–7599.
+
+> "Modeling Influenza Virus Infection: A Roadmap for Influenza Research". Viruses 2015, 7, 5274-5304; ``doi:10.3390/v7102875``
+
 ## 1. Ebola virus infection modeling and identifiability problems
 
 + **DOI** [10.3389/fmicb.2015.00257](https://www.doi.org/10.3389/fmicb.2015.00257)
