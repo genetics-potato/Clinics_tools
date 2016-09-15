@@ -1,4 +1,4 @@
-Kinetics of influenza A virus infection in humans
+## Kinetics of influenza A virus infection in humans
 
 > **DOI:** 10.3390/v7102875
 
