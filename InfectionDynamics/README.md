@@ -52,18 +52,19 @@ Virally infected cells, I, by shedding virus increase viral titers at an average
 
 #### Parameters
 
-###### TABLE 2. Patient-specific best-fit parameter values for the target cell-limited model with no delay (equations 1 through 3)a
-Patient V0 (TCID50/ml)  [(TCID50/ml)1 ·
-d1] p (TCID50/ml · d1) c (d1) t1/2 (h)  (d1) 1/ (h) R0 SSR (TCID50/ml)2
-1 3.5  101 3.4  105 7.9  103 3.3 5.0 3.4 7.1 9.6 4.6
-2 1.4  103 1.6  104 4.1  103 2.1 7.7 11.2 2.1 11.2 7.0
-3 1.0  102 1.3  104 3.2  103 2.1 7.9 2.1 11.4 37.7 8.3
-4 9.1  101 6.3  106 4.2  102 3.1 5.4 2.8 8.7 12.4 4.0
-5 4.3  101 2.3  105 1.0  102 4.2 4.0 5.1 4.7 4.4 9.0
-6 3.3  101 3.8  106 7.1  102 3.6 4.6 3.6 6.7 8.3 13.6
-Avg 9.3  102 2.7  105 1.2  102 3.0 5.6 4.0 6.0 11.1 7.1
-95% CI 1.4  102–6.1  101 8.8  106–8.3  105 4.8  103–3.0  102 2.4–3.6 4.6–6.9 2.6–6.1 3.9–9.2 6.6–18.5 5.1–9.9
-a For each patient, the best-fit initial virus titer (V0), infection rate constant (), average rate of increase of viral titer per infected cell (p), viral clearance rate (c),
+###### TABLE 2. Patient-specific best-fit parameter values for the target cell-limited model with no delay
+|Patient|V<sub>0</sub><br/>(TCID<sub>50</sub>/ml)         |β<br/>[(TCID<sub>50</sub>/ml)<sup>-1</sup><br/> x d<sup>-1</sup>]|p<br/>(TCID<sub>50</sub>/ml x d<sup>-1</sup>)    |c<br/>(d<sup>-1</sup>)|t<sub>1/2</sub> (h)|δ<br/>(d<sup>-1</sup>)|1/δ (h) |R<sub>0</sub>|SSR<br/>(TCID<sub>50</sub>/ml)<sup>2</sup>|
+|-------|---------------------------------------------|--------------------------------------------------------|---------------------------------------------|------------------|--------------------|------------------|--------|-------------|--------------------------------------|
+|1      |3.5 x 10<sup>-1</sup>                        |3.4 x 10<sup>-5</sup>                                   |7.9 x 10<sup>-3</sup>                        |3.3               | 5.0                | 3.4              | 7.1    | 9.6         | 4.6                                  |
+|2      |1.4 x 10<sup>-3</sup>                        |1.6 x 10<sup>-4</sup>                                   |4.1 x 10<sup>-3</sup>                        |2.1               | 7.7                | 11.2             | 2.1    | 11.2        | 7.0                                  |
+|3      |1.0 x 10<sup>-2</sup>                        |1.3 x 10<sup>-4</sup>                                   |3.2 x 10<sup>-3</sup>                        |2.1               | 7.9                | 2.1              | 11.4   | 37.7        | 8.3                                  |
+|4      |9.1 x 10<sup>-1</sup>                        |6.3 x 10<sup>-6</sup>                                   |4.2 x 10<sup>-2</sup>                        |3.1               | 5.4                | 2.8              | 8.7    | 12.4        | 4.0                                  |
+|5      |4.3 x 10<sup>-1</sup>                        |2.3 x 10<sup>-5</sup>                                   |1.0 x 10<sup>-2</sup>                        |4.2               | 4.0                | 5.1              | 4.7    | 4.4         | 9.0                                  |
+|6      |3.3 x 10<sup>-1</sup>                        |3.8 x 10<sup>-6</sup>                                   |7.1 x 10<sup>-2</sup>                        |3.6               | 4.6                | 3.6              | 6.7    | 8.3         | 13.6                                 |
+|Avg    |9.3 x 10<sup>-2</sup>                        |2.7 x 10<sup>-5</sup>                                   |1.2 x 10<sup>-2</sup>                        |3.0               | 5.6                | 4.0              | 6.0    | 11.1        | 7.1                                  |
+|95% CI |1.4 x 10<sup>-2</sup><br/>– 6.1 x 10<sup>-1</sup>|8.8 x 10<sup>-6</sup> <br/>– 8.3 x 10<sup>-5</sup>           |4.8 x 10<sup>-3</sup> <br/>– 3.0 x 10<sup>-2</sup>|2.4 – 3.6         | 4.6–6.9            | 2.6–6.1          | 3.9–9.2| 6.6–18.5    | 5.1–9.9                              |
+
++ a. For each patient, the best-fit initial virus titer (V0), infection rate constant (), average rate of increase of viral titer per infected cell (p), viral clearance rate (c),
 half-life of free virus (t1/2), infected-cell lifespan (1/), basic reproductive number (R0), and sum of square residuals (SSR) are given along with their geometric average
 and geometric 95% CI. The parameter T0 was held fixed at a value of 4  108 cells.
 
