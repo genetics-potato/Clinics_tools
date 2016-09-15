@@ -47,8 +47,8 @@ dT/dt = -βTV
 dI/dt =  βTV - δI
 dV/dt =  pI  - cV
 ```
-where T is the number of uninfected target cells, I is the number of productively infected cells, and V is the infectiousviral titer expressed in TCID50/ml of nasal wash. We assume that infection is initiated by the introduction of virus into the upper respiratory tract at a concentration equivalent to V0 TCID50/ml of nasal wash. Susceptible cells become infected by virus at rate TV, where  is the rate constant characterizing infection.
-Virally infected cells, I, by shedding virus increase viral titers at an average rate of p per cell and die at a rate of  per cell, where 1/ is the average life span of a productively infected cell. Free virus is cleared at a rate of c per day. The effects of immune responses are not explicitly described in this simple model, but they are implicitly included in the death rate of infected cells () and the clearance rate of virus (c). The reduction in viral titer due to binding and infection of target cells at rate TV makes little impact on the amount of free virus and was neglected. The mechanism of virion clearance is unknown and may involve mucociliary clearance as well as binding of virions to cells and to respiratory secretions, such as mucins.
+where ``T`` is the number of uninfected target cells, ``I`` is the number of productively infected cells, and ``V`` is the infectiousviral titer expressed in TCID<sub>50</sub>/ml of nasal wash. We assume that infection is initiated by the introduction of virus into the upper respiratory tract at a concentration equivalent to V<sub>0</sub> TCID<sub>50</sub>/ml of nasal wash. Susceptible cells become infected by virus at rate ``βTV``, where ``β`` is the rate constant characterizing infection.
+Virally infected cells, ``I``, by shedding virus increase viral titers at an average rate of p per cell and die at a rate of _**p**_ per cell, where ``1/δ`` is the average life span of a productively infected cell. Free virus is cleared at a rate of c per day. The effects of immune responses are not explicitly described in this simple model, but they are implicitly included in the death rate of infected cells (``δ``) and the clearance rate of virus (``c``). The reduction in viral titer due to binding and infection of target cells at rate ``βTV`` makes little impact on the amount of free virus and was neglected. The mechanism of virion clearance is unknown and may involve mucociliary clearance as well as binding of virions to cells and to respiratory secretions, such as mucins.
 
 #### Parameters
 
@@ -64,9 +64,7 @@ Virally infected cells, I, by shedding virus increase viral titers at an average
 |Avg    |9.3 x 10<sup>-2</sup>                        |2.7 x 10<sup>-5</sup>                                   |1.2 x 10<sup>-2</sup>                        |3.0               | 5.6                | 4.0              | 6.0    | 11.1        | 7.1                                  |
 |95% CI |1.4 x 10<sup>-2</sup><br/>– 6.1 x 10<sup>-1</sup>|8.8 x 10<sup>-6</sup> <br/>– 8.3 x 10<sup>-5</sup>           |4.8 x 10<sup>-3</sup> <br/>– 3.0 x 10<sup>-2</sup>|2.4 – 3.6         | 4.6–6.9            | 2.6–6.1          | 3.9–9.2| 6.6–18.5    | 5.1–9.9                              |
 
-+ a. For each patient, the best-fit initial virus titer (V0), infection rate constant (), average rate of increase of viral titer per infected cell (p), viral clearance rate (c),
-half-life of free virus (t1/2), infected-cell lifespan (1/), basic reproductive number (R0), and sum of square residuals (SSR) are given along with their geometric average
-and geometric 95% CI. The parameter T0 was held fixed at a value of 4  108 cells.
+> For each patient, the best-fit initial virus titer (V<sub>0</sub>), infection rate constant (β), average rate of increase of viral titer per infected cell (p), viral clearance rate (c), half-life of free virus (t<sub>1/2</sub>), infected-cell lifespan (1/δ), basic reproductive number (R<sub>0</sub>), and sum of square residuals (**SSR**) are given along with their geometric average and geometric ``95% CI``. The parameter T<sub>0</sub> was held fixed at a value of 4 x 10<sup>8</sup> cells.
 
 ## 2. Ebola virus infection modeling and identifiability problems
 
