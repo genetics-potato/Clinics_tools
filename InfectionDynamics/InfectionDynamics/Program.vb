@@ -3,10 +3,26 @@ Imports RDotNET.Extensions.VisualBasic.API.base
 Imports RDotNET.Extensions.VisualBasic.API.utils
 Imports RDotNET.Extensions.Bioinformatics.deSolve.API
 Imports RDotNET.Extensions.Bioinformatics.deSolve
+Imports Microsoft.VisualBasic.Mathematical.Plots
+Imports Microsoft.VisualBasic.Imaging
+Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
+Imports Microsoft.VisualBasic.Mathematical.BasicR
 
 Module Program
 
     Sub Main()
+
+        Dim result = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(1000, 0, 8)
+
+        result.y("V") = New NamedValue(Of Double()) With {
+            .Name = "V",
+            .x = -Log(New Vector(result.y("V").x))
+        }
+
+        Call result.DataFrame.Save("./Kinetics_of_influenza_A_virus_infection_in_humans.csv", Encodings.ASCII)
+        Call Scatter.Plot(result.FromODEs).SaveAs("./Kinetics_of_influenza_A_virus_infection_in_humans.png")
+
+        Pause()
 
         Call $"p      <- {p}".丶
         Call $"beta   <- {beta}".丶
