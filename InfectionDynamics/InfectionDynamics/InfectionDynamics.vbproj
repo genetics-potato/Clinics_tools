@@ -93,6 +93,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ebola_virus_infection_modeling_and_identifiability_problems.vb" />
     <Compile Include="Kinetics_of_influenza_A_virus_infection_in_humans.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
