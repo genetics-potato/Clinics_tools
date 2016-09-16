@@ -1,6 +1,11 @@
 ﻿Imports Microsoft.VisualBasic.Mathematical.BasicR
 Imports Microsoft.VisualBasic.Mathematical.diffEq
 
+''' <summary>
+''' ##### Kinetics of influenza A virus infection in humans
+'''
+''' > **DOI** 10.3390/v7102875
+''' </summary>
 Public Class Kinetics_of_influenza_A_virus_infection_in_humans : Inherits ODEs
 
     Dim T As var
