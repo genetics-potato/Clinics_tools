@@ -37,5 +37,26 @@ Module Program
         Call result.DataFrame.Save("./Ebola_virus_infection_modeling_and_identifiability_problems.csv", Encodings.ASCII)
         Call Scatter.Plot(result.FromODEs(, 10, 10)).SaveAs("./Ebola_virus_infection_modeling_and_identifiability_problems.png")
 
+
+        With New ddd
+
+            Dim x As New RDotNET.Extensions.VisualBasic.var
+
+            .call = "x3 <- ff"
+
+
+
+
+        End With
     End Sub
+
+
+    Class ddd
+
+        WriteOnly Property [call] As String
+            Set(value As String)
+
+            End Set
+        End Property
+    End Class
 End Module

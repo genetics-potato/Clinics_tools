@@ -145,15 +145,15 @@
       <Project>{21c35138-455b-4833-9756-b2629f972a22}</Project>
       <Name>RDotNet</Name>
     </ProjectReference>
-    <ProjectReference Include="G:\VisualBasic_AppFramework\DataSciences\Math\Math\Microsoft.VisualBasic.Mathematical.vbproj">
-      <Project>{E3367B88-5D0C-495A-8273-331656D4B5AA}</Project>
+    <ProjectReference Include="G:\VisualBasic_AppFramework\Data_science\Mathematical\Math\Microsoft.VisualBasic.Mathematical.vbproj">
+      <Project>{e3367b88-5d0c-495a-8273-331656d4b5aa}</Project>
       <Name>Microsoft.VisualBasic.Mathematical</Name>
     </ProjectReference>
-    <ProjectReference Include="G:\VisualBasic_AppFramework\DataSciences\Math\ODE\diffEq.vbproj">
-      <Project>{14E0B048-3A0D-4FD6-AA79-9B815D6F1B30}</Project>
+    <ProjectReference Include="G:\VisualBasic_AppFramework\Data_science\Mathematical\ODE\diffEq.vbproj">
+      <Project>{14e0b048-3a0d-4fd6-aa79-9b815d6f1b30}</Project>
       <Name>diffEq</Name>
     </ProjectReference>
-    <ProjectReference Include="G:\VisualBasic_AppFramework\DataSciences\Math\Plots\Plots.vbproj">
+    <ProjectReference Include="G:\VisualBasic_AppFramework\Data_science\Mathematical\Plots\Plots.vbproj">
       <Project>{17f8e821-0a01-4975-9caa-ac95251226d5}</Project>
       <Name>Plots</Name>
     </ProjectReference>
