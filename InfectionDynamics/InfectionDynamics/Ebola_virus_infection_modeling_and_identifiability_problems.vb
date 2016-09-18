@@ -1,4 +1,4 @@
-﻿Imports Microsoft.VisualBasic.Mathematical.BasicR
+Imports Microsoft.VisualBasic.Mathematical.BasicR
 Imports Microsoft.VisualBasic.Mathematical.diffEq
 
 Public Class Ebola_virus_infection_modeling_and_identifiability_problems : Inherits ODEs
@@ -18,7 +18,7 @@ Public Class Ebola_virus_infection_modeling_and_identifiability_problems : Inher
     ''' infection rate(β),a replication rate of at least 31.8 ffu/ml cell−1
     ''' day−1 is still needed to achieve a good fit of the viral replication
     ''' kinetics in Figure3.
-    ''' </summary>G:\R.Bioinformatics\RDotNET.Extensions.VisualBasic\API\utils\
+    ''' </summary>
     Const beta As Double = 1.91 '31.8
 
     ''' <summary>
