@@ -28,7 +28,7 @@ Module Program
         Dim delta As New NamedValue(Of DoubleRange) With {.Name = NameOf(delta), .x = New DoubleRange(10 ^ -2, 10)}
         Dim uid As New Uid
 
-        For Each x In BootstrapEstimate.Bootstrapping(Of Kinetics_of_influenza_A_virus_infection_in_humans)({p, c, beta, delta}, {T, I, V}, Integer.MaxValue, 1000000, 0, 50)
+        For Each x In BootstrapEstimate.Bootstrapping(Of Kinetics_of_influenza_A_virus_infection_in_humans)({p, c, beta, delta}, {T, I, V}, Long.MaxValue, 1000000, 0, 50)
             Dim id As String = ++uid
             Dim path As String = App.HOME & $"/be/{id.First}/{id}.csv"
             Call x.DataFrame.Save(path, Encodings.ASCII)
