@@ -47,6 +47,11 @@ Public Module SiteMatches
             Dim lociPos As New Location(
                 {loci.UTR_Start, loci.MSA_Start}.Min,
                 {loci.UTR_END, loci.MSA_END}.Max)
+
+            If lociPos.Left = 0 OrElse lociPos.Right = 0 Then
+                Continue For
+            End If
+
             Dim site = LinqAPI.DefaultFirst(Of ImperfectPalindrome) <=
                 From x As ImperfectPalindrome
                 In data.AsParallel

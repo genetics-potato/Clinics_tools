@@ -6,10 +6,10 @@ Namespace SFM
 
         Public Property Identifier As String
         Public Property Sequence_header As String
-        Public Property UTR_Start As String
-        Public Property UTR_END As String
-        Public Property MSA_Start As String
-        Public Property MSA_END As String
+        Public Property UTR_Start As Integer
+        Public Property UTR_END As Integer
+        Public Property MSA_Start As Integer
+        Public Property MSA_END As Integer
         Public Property UTR_Sequence_Fragment As String
         Public Property MSA_Sequence_Fragment As String
         Public Property additions As Dictionary(Of String, String)

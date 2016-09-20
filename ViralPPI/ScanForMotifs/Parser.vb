@@ -95,10 +95,10 @@ Namespace SFM
                 Yield New MotifLoci With {
                     .Identifier = tokens(0),
                     .Sequence_header = tokens(1),
-                    .UTR_Start = tokens(2),
-                    .MSA_END = tokens(3),
-                    .MSA_Start = tokens(4),
-                    .UTR_END = tokens(5),
+                    .UTR_Start = CInt(Val(tokens(2))),
+                    .MSA_END = CInt(Val(tokens(3))),
+                    .MSA_Start = CInt(Val(tokens(4))),
+                    .UTR_END = CInt(Val(tokens(5))),
                     .UTR_Sequence_Fragment = tokens(6),
                     .MSA_Sequence_Fragment = tokens(7)
                 }
