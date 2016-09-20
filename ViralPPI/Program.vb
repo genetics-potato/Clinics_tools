@@ -19,7 +19,7 @@ Module CLI
         Dim cut As Integer = args.GetValue("/cut", 3)
         Dim out As String = args.GetValue("/out", [in].TrimSuffix & $".{pals.BaseName},cut={cut}.csv")
         Dim sites = [in].LoadCsv(Of MotifLoci).ToArray
-        Dim palData = SiteMatches.LoadPalindrome(pals)
+        Dim palData = SiteMatches.LoadPalindrome(pals, cut)
 
         Return SiteMatches.MatchPalindrome(
             sites, palData, pals.BaseName).SaveTo(out).CLICode
