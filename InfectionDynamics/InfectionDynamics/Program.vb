@@ -45,21 +45,21 @@ Module Program
         'Pause()
         ' bootstrapping test
 
-        Dim T As New NamedValue(Of PreciseRandom) With {.Name = NameOf(T), .x = New PreciseRandom(10 ^ 5, 10 ^ 9)}
-        Dim I As New NamedValue(Of PreciseRandom) With {.Name = NameOf(I), .x = New PreciseRandom(0, 10 ^ 3)}
-        Dim V As New NamedValue(Of PreciseRandom) With {.Name = NameOf(V), .x = New PreciseRandom(10 ^ -5, 1)}
+        Dim T As New NamedValue(Of PreciseRandom) With {.Name = NameOf(T), .x = New PreciseRandom(10 ^ 3, 10 ^ 10)}
+        Dim I As New NamedValue(Of PreciseRandom) With {.Name = NameOf(I), .x = New PreciseRandom(0, 10 ^ 4)}
+        Dim V As New NamedValue(Of PreciseRandom) With {.Name = NameOf(V), .x = New PreciseRandom(10 ^ -6, 10)}
 
-        For Iddddddd = 0 To 100
-            Call I.x.NextNumber.__DEBUG_ECHO
-        Next
+        'For Iddddddd = 0 To 100
+        '    Call I.x.NextNumber.__DEBUG_ECHO
+        'Next
 
-        Dim p As New NamedValue(Of PreciseRandom) With {.Name = NameOf(p), .x = New PreciseRandom(10 ^ -4, 1)}
-        Dim c As New NamedValue(Of PreciseRandom) With {.Name = NameOf(c), .x = New PreciseRandom(10 ^ -2, 10)}
+        Dim p As New NamedValue(Of PreciseRandom) With {.Name = NameOf(p), .x = New PreciseRandom(10 ^ -5, 1)}
+        Dim c As New NamedValue(Of PreciseRandom) With {.Name = NameOf(c), .x = New PreciseRandom(10 ^ -5, 10)}
         Dim beta As New NamedValue(Of PreciseRandom) With {.Name = NameOf(beta), .x = New PreciseRandom(10 ^ -10, 1)}
-        Dim delta As New NamedValue(Of PreciseRandom) With {.Name = NameOf(delta), .x = New PreciseRandom(10 ^ -2, 15)}
+        Dim delta As New NamedValue(Of PreciseRandom) With {.Name = NameOf(delta), .x = New PreciseRandom(10 ^ -5, 150)}
         Dim uid As New Uid
 
-        For Each x In BootstrapEstimate.Bootstrapping(Of Kinetics_of_influenza_A_virus_infection_in_humans)({p, c, beta, delta}, {T, I, V}, Long.MaxValue, 10000, 0, 30)
+        For Each x In BootstrapEstimate.Bootstrapping(Of Kinetics_of_influenza_A_virus_infection_in_humans)({p, c, beta, delta}, {T, I, V}, Long.MaxValue, 10000, 0, 200)
             Dim id As String = ++uid
             Dim path As String = App.HOME & $"/be/{id.First}/{id}.csv"
             Call x.DataFrame.Save(path, Encodings.ASCII)
