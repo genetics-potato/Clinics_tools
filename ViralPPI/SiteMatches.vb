@@ -25,7 +25,7 @@ Public Module SiteMatches
                 id _
                 .Group _
                 .Select(Function(file) file.LoadCsv(Of ImperfectPalindrome)) _
-                .MatrixAsIterator
+                .MatrixToVector
             out(id.id) = data _
                 .Where(Function(x) x.MaxMatch >= maxMatch) _
                 .ToArray
@@ -35,7 +35,7 @@ Public Module SiteMatches
     End Function
 
     <Extension>
-    Public Sub MatchPalindrome(ByRef locis As MotifLoci(), palindrome As Dictionary(Of String, ImperfectPalindrome()), title As String)
+    Public Function MatchPalindrome(ByRef locis As MotifLoci(), palindrome As Dictionary(Of String, ImperfectPalindrome()), title As String) As MotifLoci()
         Dim GetValues = DynamicsConfiguration.ToDictionary(Of ImperfectPalindrome)()
 
         For Each loci As MotifLoci In locis
@@ -63,5 +63,7 @@ Public Module SiteMatches
                 Next
             End If
         Next
-    End Sub
+
+        Return locis
+    End Function
 End Module
