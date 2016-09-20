@@ -1,8 +1,8 @@
 ﻿Imports System.Text.RegularExpressions
+Imports Microsoft.VisualBasic
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Text
 Imports SMRUCC.genomics.SequenceModel.FASTA
-Imports Microsoft.VisualBasic
 
 Namespace SFM
 
