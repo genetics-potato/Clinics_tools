@@ -7,7 +7,11 @@ Imports SMRUCC.genomics.SequenceModel.FASTA
 Namespace SFM
 
     ''' <summary>
-    ''' http://bioanalysis.otago.ac.nz/sfm/sfm_main.pl
+    ''' http://bioanalysis.otago.ac.nz/sfm/
+    ''' 
+    ''' > Scan for Motifs: a webserver for the analysis of post-transcriptional regulatory elements in the 3′ untranslated regions (3′ UTRs) of mRNAs
+    ''' 
+    ''' http://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-15-174
     ''' </summary>
     Public Module Parser
 

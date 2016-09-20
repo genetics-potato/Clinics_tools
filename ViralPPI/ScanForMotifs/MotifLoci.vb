@@ -12,6 +12,7 @@ Namespace SFM
         Public Property MSA_END As String
         Public Property UTR_Sequence_Fragment As String
         Public Property MSA_Sequence_Fragment As String
+        Public Property additions As Dictionary(Of String, String)
 
         Public Overrides Function ToString() As String
             Return Me.GetJson
