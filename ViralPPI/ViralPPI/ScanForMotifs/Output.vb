@@ -1,4 +1,6 @@
-﻿Imports SMRUCC.genomics.SequenceModel.FASTA
+﻿Imports Microsoft.VisualBasic.DocumentFormat.Csv
+Imports Microsoft.VisualBasic.Serialization.JSON
+Imports SMRUCC.genomics.SequenceModel.FASTA
 
 Namespace SFM
 
@@ -33,5 +35,17 @@ Namespace SFM
         ''' <returns></returns>
         Public Property miRBase As MotifLoci()
 #End Region
+
+        ''' <summary>
+        ''' Save data files into a data export directory.
+        ''' </summary>
+        ''' <param name="EXPORT"></param>
+        Public Sub Save(EXPORT As String)
+            Call inputs.bufs.GetJson.SaveTo(EXPORT & "/inputDetails.json")
+            Call Alignment.Save(EXPORT & "/inputAlignments.fasta", Encodings.ASCII)
+            Call Regulatory.SaveTo(EXPORT & "/regulatory_elementary.csv")
+            Call RBPDB.SaveTo(EXPORT & "/protein_bindings.csv")
+            Call miRBase.SaveTo(EXPORT & "/human_microRNA.csv")
+        End Sub
     End Class
 End Namespace

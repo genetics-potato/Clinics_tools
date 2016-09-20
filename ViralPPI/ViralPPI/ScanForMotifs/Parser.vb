@@ -24,7 +24,7 @@ Namespace SFM
                 .Alignment = mla
             }
 
-            For Each part As String In parts.Skip(2)
+            For Each part As String In parts.Skip(3)
                 If InStr(part, "Identified regulatory elements from Transterm") > 0 Then
                     out.Regulatory = MotifParser(part).ToArray
                 ElseIf InStr(part, "identified protein binding sites from RBPDB") > 0 Then
@@ -72,7 +72,7 @@ Namespace SFM
         End Function
 
         Public Iterator Function MotifParser(part As String) As IEnumerable(Of MotifLoci)
-            Dim lines As String() = part.lTokens
+            Dim lines As String() = part.lTokens.Skip(1).ToArray
             Dim i As Integer
 
             For i = 0 To lines.Length - 1
@@ -82,6 +82,10 @@ Namespace SFM
             Next
 
             For Each line As String In lines.Skip(i)
+                If line = "//" Then
+                    Exit For
+                End If
+
                 Dim tokens As String() = line.Split(ASCII.TAB)
 
                 Yield New MotifLoci With {
