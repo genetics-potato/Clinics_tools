@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports Microsoft.VisualBasic.ComponentModel.DataSourceModel
 Imports Microsoft.VisualBasic.ComponentModel.Ranges
+Imports Microsoft.VisualBasic.Data.Bootstrapping
 Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Mathematical
@@ -8,6 +9,7 @@ Imports Microsoft.VisualBasic.Mathematical.BasicR
 Imports Microsoft.VisualBasic.Mathematical.diffEq
 Imports Microsoft.VisualBasic.Mathematical.Plots
 Imports Microsoft.VisualBasic.Mathematical.SyntaxAPI.MathExtension
+Imports Microsoft.VisualBasic.Serialization.JSON
 Imports RDotNET.Extensions.Bioinformatics.deSolve
 Imports RDotNET.Extensions.Bioinformatics.deSolve.API
 Imports RDotNET.Extensions.VisualBasic
@@ -17,6 +19,13 @@ Imports RDotNET.Extensions.VisualBasic.API.utils
 Module Program
 
     Sub Main()
+
+        Dim sfsfds = ODEsOut.LoadFromDataFrame("X:\RNA-seq\be\1\1V.csv")
+
+        Dim ppppaspdasds = Analysis.GroupsAnalysis("X:\RNA-seq\be\", Kinetics_of_influenza_A_virus_infection_in_humans.GetAnalysis, 5)
+
+        Call ppppaspdasds.GetJson.SaveTo("x:\afsdfsd.json")
+
 
         Dim result = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(10000, 0, 7)
 

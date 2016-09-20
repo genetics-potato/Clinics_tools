@@ -133,6 +133,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\VisualBasic_AppFramework\Data_science\Bootstrapping\Bootstrapping.vbproj">
+      <Project>{b21b924a-d67f-4554-8946-a154563394b2}</Project>
+      <Name>Bootstrapping</Name>
+    </ProjectReference>
     <ProjectReference Include="G:\R.Bioinformatics\RDotNet.Extensions.Bioinformatics\RDotNet.Extensions.Bioinformatics.vbproj">
       <Project>{485965cd-da31-4517-86f6-94dfd28379c1}</Project>
       <Name>RDotNet.Extensions.Bioinformatics</Name>
