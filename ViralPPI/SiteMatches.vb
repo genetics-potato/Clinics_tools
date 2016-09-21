@@ -104,15 +104,18 @@ Public Module SiteMatches
     End Function
 
     <Extension>
-    Public Function MatchRepeats(ByRef locis As MotifLoci(), repeats As Dictionary(Of String, RepeatsView()), title As String) As MotifLoci()
-        Dim GetValues = DynamicsConfiguration.ToDictionary(Of RepeatsView)()
+    Public Function MatchRepeats(Of T As RepeatsView)(ByRef locis As MotifLoci(),
+                                                      repeats As Dictionary(Of String, T()),
+                                                      getLocis As Func(Of T, Integer())) As MotifLoci()
+
+        Dim GetValues = DynamicsConfiguration.ToDictionary(Of T)()
 
         For Each loci As MotifLoci In locis
             Dim id As String = loci.Sequence_header.Split("|"c).First.ToLower
             If Not repeats.ContainsKey(id) Then
                 Continue For
             End If
-            Dim data As RepeatsView() = repeats(id)
+            Dim data As T() = repeats(id)
             Dim lociPos As New Location(
                 {loci.UTR_Start, loci.MSA_Start}.Min,
                 {loci.UTR_END, loci.MSA_END}.Max)
@@ -121,13 +124,13 @@ Public Module SiteMatches
                 Continue For
             End If
 
-            Dim site = LinqAPI.DefaultFirst(Of RepeatsView) <=
-                From x As RepeatsView
+            Dim site = LinqAPI.DefaultFirst(Of T) <=
+                From x As T
                 In data.AsParallel
                 Let len As Integer = x.SequenceData.Length
                 Let poss = {
                     New Location(x.Left, x.Left + len) +
-                    x.Locis.ToList(Function(l) New Location(l, l + len))
+                    getLocis(x).ToList(Function(l) New Location(l, l + len))
                 }.MatrixAsIterator
                 Where Not (From pos As Location
                            In poss
@@ -140,7 +143,7 @@ Public Module SiteMatches
                 Dim value = GetValues(site)
 
                 For Each val As KeyValuePair(Of String, String) In value
-                    loci.additions.Add(title & "." & val.Key, val.Value)
+                    loci.additions.Add(val.Key, val.Value)
                 Next
             End If
         Next

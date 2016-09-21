@@ -3,6 +3,7 @@ Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Data.csv
 Imports SMRUCC.Clinic.ViralPPI.SFM
+Imports SMRUCC.genomics.Analysis.SequenceTools.SequencePatterns.LociFilter
 Imports SMRUCC.genomics.Analysis.SequenceTools.SequencePatterns.Topologically
 
 Module Program
@@ -25,6 +26,25 @@ Module CLI
 
         Return SiteMatches.MatchPalindrome(
             sites, palData, pals.BaseName).SaveTo(out).CLICode
+    End Function
+
+    <ExportAPI("/Match.Sites.Repeats", Usage:="/Match.Sites.Repeats /in <motifs.csv> /repeats <repeats.DIR> [/rev /interval <2000> /out <out.csv>]")>
+    Public Function MatchSitesRepeats(args As CommandLine) As Integer
+        Dim [in] As String = args("/in")
+        Dim repeats As String = args("/repeats")
+        Dim interval As Integer = args.GetValue("/interval", 2000)
+        Dim rev As Boolean = args.GetBoolean("/rev")
+        Dim out As String = args.GetValue(
+            "/out", [in].TrimSuffix & $".{repeats.BaseName},interval={interval}{If(rev, ",rev", "")}.csv")
+        Dim sites = [in].LoadCsv(Of MotifLoci).ToArray
+
+        If rev Then
+            Dim rep = SiteMatches.LoadRepeats(Of RevRepeatsView)([in], interval, Compares.FromLoci)
+            Return sites.MatchRepeats(rep, Function(x) x.RevLocis).SaveTo(out).CLICode
+        Else
+            Dim rep = SiteMatches.LoadRepeats(Of RepeatsView)([in], interval, Compares.Interval)
+            Return sites.MatchRepeats(rep, Function(x) x.Locis).SaveTo(out).CLICode
+        End If
     End Function
 
     <ExportAPI("/Group.Count", Usage:="/Group.Count /in <motifLoci.csv> [/out <out.csv>]")>
