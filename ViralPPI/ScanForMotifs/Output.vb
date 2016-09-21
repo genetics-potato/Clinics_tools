@@ -1,4 +1,4 @@
-﻿Imports Microsoft.VisualBasic.DocumentFormat.Csv
+﻿Imports Microsoft.VisualBasic.Data.csv
 Imports Microsoft.VisualBasic.Serialization.JSON
 Imports SMRUCC.genomics.SequenceModel.FASTA
 
