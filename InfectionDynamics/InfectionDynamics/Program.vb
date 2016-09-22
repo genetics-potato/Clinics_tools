@@ -20,30 +20,30 @@ Module Program
 
     Sub Main()
 
-        Dim sfsfds = ODEsOut.LoadFromDataFrame("X:\RNA-seq\be\1\1V.csv")
+        'Dim sfsfds = ODEsOut.LoadFromDataFrame("X:\RNA-seq\be\1\1V.csv")
 
-        Dim ppppaspdasds = Analysis.GroupsAnalysis("X:\RNA-seq\be\", Kinetics_of_influenza_A_virus_infection_in_humans.GetAnalysis, 5)
+        'Dim ppppaspdasds = Analysis.GroupsAnalysis("X:\RNA-seq\be\", Kinetics_of_influenza_A_virus_infection_in_humans.GetAnalysis, 5)
 
-        Call ppppaspdasds.GetJson.SaveTo("x:\afsdfsd.json")
+        'Call ppppaspdasds.GetJson.SaveTo("x:\afsdfsd.json")
 
 
-        Dim result = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(10000, 0, 7)
+        'Dim result = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(10000, 0, 7)
 
-        'result.y("V") = New NamedValue(Of Double()) With {
-        '.Name = "V",
-        '.x = Log(New Vector(result.y("V").x), 2).ToArray
-        '}
+        ''result.y("V") = New NamedValue(Of Double()) With {
+        ''.Name = "V",
+        ''.x = Log(New Vector(result.y("V").x), 2).ToArray
+        ''}
 
-        'result.y("I") = New NamedValue(Of Double()) With {
-        '.Name = "I",
-        '.x = VectorMath.Log(New Vector(result.y("I").x)).ToArray
-        ' }
-        'result.y("T") = New NamedValue(Of Double()) With {
-        '.Name = "T",
-        '.x = VectorMath.Log(New Vector(result.y("T").x)).ToArray
-        ' }
+        ''result.y("I") = New NamedValue(Of Double()) With {
+        ''.Name = "I",
+        ''.x = VectorMath.Log(New Vector(result.y("I").x)).ToArray
+        '' }
+        ''result.y("T") = New NamedValue(Of Double()) With {
+        ''.Name = "T",
+        ''.x = VectorMath.Log(New Vector(result.y("T").x)).ToArray
+        '' }
 
-        Call result.DataFrame.Save("./Kinetics_of_influenza_A_virus_infection_in_humans.csv", Encodings.ASCII)
+        'Call result.DataFrame.Save("./Kinetics_of_influenza_A_virus_infection_in_humans.csv", Encodings.ASCII)
         'Dim rnd As New PreciseRandom(10 ^ -23, 300)
 
         'Using ffdfdsf As StreamWriter = "x:\sdfsdfdsfs.txt".OpenWriter
@@ -58,9 +58,7 @@ Module Program
         Dim I As New NamedValue(Of PreciseRandom) With {.Name = NameOf(I), .x = New PreciseRandom(0, 10 ^ 4)}
         Dim V As New NamedValue(Of PreciseRandom) With {.Name = NameOf(V), .x = New PreciseRandom(10 ^ -6, 10)}
 
-        'For Iddddddd = 0 To 100
-        '    Call I.x.NextNumber.__DEBUG_ECHO
-        'Next
+
 
         Dim p As New NamedValue(Of PreciseRandom) With {.Name = NameOf(p), .x = New PreciseRandom(10 ^ -5, 1)}
         Dim c As New NamedValue(Of PreciseRandom) With {.Name = NameOf(c), .x = New PreciseRandom(10 ^ -5, 10)}
@@ -68,7 +66,10 @@ Module Program
         Dim delta As New NamedValue(Of PreciseRandom) With {.Name = NameOf(delta), .x = New PreciseRandom(10 ^ -5, 150)}
         Dim uid As New Uid
 
-        For Each x In BootstrapEstimate.Bootstrapping(Of Kinetics_of_influenza_A_virus_infection_in_humans)({p, c, beta, delta}, {T, I, V}, Long.MaxValue, 10000, 0, 200)
+
+        Dim allRange As New PreciseRandom(-300, 100)
+
+        For Each x In allRange.Bootstrapping(Of Kinetics_of_influenza_A_virus_infection_in_humans)({"p", "c", "beta", "delta"}, {"T", "I", "V"}, Long.MaxValue, 10000, 0, 200)
             Dim id As String = ++uid
             Dim path As String = App.HOME & $"/be/{id.First}/{id}.csv"
             Call x.DataFrame.Save(path, Encodings.ASCII)
@@ -95,12 +96,12 @@ Module Program
         ' }
 
         '   Call result.DataFrame.Save("./Kinetics_of_influenza_A_virus_infection_in_humans.csv", Encodings.ASCII)
-        Call Scatter.Plot(result.FromODEs(, 10, 10)).SaveAs("./Kinetics_of_influenza_A_virus_infection_in_humans.png")
+        'Call Scatter.Plot(result.FromODEs(, 10, 10)).SaveAs("./Kinetics_of_influenza_A_virus_infection_in_humans.png")
 
 
-        result = New Ebola_virus_infection_modeling_and_identifiability_problems().Solve(10000, 0, 7)
-        Call result.DataFrame.Save("./Ebola_virus_infection_modeling_and_identifiability_problems.csv", Encodings.ASCII)
-        Call Scatter.Plot(result.FromODEs(, 10, 10)).SaveAs("./Ebola_virus_infection_modeling_and_identifiability_problems.png")
+        'result = New Ebola_virus_infection_modeling_and_identifiability_problems().Solve(10000, 0, 7)
+        'Call result.DataFrame.Save("./Ebola_virus_infection_modeling_and_identifiability_problems.csv", Encodings.ASCII)
+        'Call Scatter.Plot(result.FromODEs(, 10, 10)).SaveAs("./Ebola_virus_infection_modeling_and_identifiability_problems.png")
 
 
         With New ddd

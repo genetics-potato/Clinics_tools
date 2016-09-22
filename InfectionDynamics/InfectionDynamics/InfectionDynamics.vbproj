@@ -133,6 +133,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\VisualBasic_AppFramework\Data\DataFrame\+VB_DataFrame.vbproj">
+      <Project>{7283C179-F852-4EAD-8D8F-B82EF2CBD7DB}</Project>
+      <Name>+VB_DataFrame</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\VisualBasic_AppFramework\Data_science\Bootstrapping\Bootstrapping.vbproj">
       <Project>{b21b924a-d67f-4554-8946-a154563394b2}</Project>
       <Name>Bootstrapping</Name>
