@@ -61,18 +61,18 @@ Public Class Model : Inherits MonteCarlo.Model
 
     Public Overrides Function params() As NamedValue(Of INextRandomNumber)()
         Return {
-            New NamedValue(Of INextRandomNumber)(NameOf(p), GetRandom(0.0000000001, 100)),
-            New NamedValue(Of INextRandomNumber)(NameOf(c), GetRandom(0, 100)),
-            New NamedValue(Of INextRandomNumber)(NameOf(beta), GetRandom(0.0000000001, 100)),
-            New NamedValue(Of INextRandomNumber)(NameOf(delta), GetRandom(0, 100))
+            New NamedValue(Of INextRandomNumber)(NameOf(p), GetRandom(0.000000000000001, 1000)),
+            New NamedValue(Of INextRandomNumber)(NameOf(c), GetRandom(0, 1000)),
+            New NamedValue(Of INextRandomNumber)(NameOf(beta), GetRandom(0.00000000000001, 1000)),
+            New NamedValue(Of INextRandomNumber)(NameOf(delta), GetRandom(0, 1000))
         }
     End Function
 
     Public Overrides Function yinit() As NamedValue(Of INextRandomNumber)()
         Return {
-            New NamedValue(Of INextRandomNumber)(NameOf(V), GetRandom(0.0000000001, 100.0)),
+            New NamedValue(Of INextRandomNumber)(NameOf(V), GetRandom(0.0000000000001, 1000.0)),
             New NamedValue(Of INextRandomNumber)(NameOf(T), GetRandom(0, 1.0E+20)),
-            New NamedValue(Of INextRandomNumber)(NameOf(I), GetRandom(0, 100000))
+            New NamedValue(Of INextRandomNumber)(NameOf(I), GetRandom(0, 1000000))
         }
     End Function
 End Class
