@@ -20,6 +20,11 @@ Module Program
 
     Sub Main()
 
+        Dim observation As ODEsOut = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(10000, 0, 100)
+
+        Call MonteCarlo.Iterations(App.AssemblyName & ".exe", observation, 1000, 20, ).GetJson.__DEBUG_ECHO
+
+
         'Dim sfsfds = ODEsOut.LoadFromDataFrame("X:\RNA-seq\be\1\1V.csv")
 
         'Dim ppppaspdasds = Analysis.GroupsAnalysis("X:\RNA-seq\be\", Kinetics_of_influenza_A_virus_infection_in_humans.GetAnalysis, 5)
@@ -54,28 +59,28 @@ Module Program
         'Pause()
         ' bootstrapping test
 
-        Dim T As New NamedValue(Of PreciseRandom) With {.Name = NameOf(T), .x = New PreciseRandom(10 ^ 3, 10 ^ 10)}
-        Dim I As New NamedValue(Of PreciseRandom) With {.Name = NameOf(I), .x = New PreciseRandom(0, 10 ^ 4)}
-        Dim V As New NamedValue(Of PreciseRandom) With {.Name = NameOf(V), .x = New PreciseRandom(10 ^ -6, 10)}
+        'Dim uid As New Uid
+
+
+        'Dim allRange As New PreciseRandom(-10, 10)   ' 1e-10 -> 1e10
+        'Dim I As New NamedValue(Of PreciseRandom) With {.Name = NameOf(I), .x = New PreciseRandom(-10, 3)}
+        'Dim T As New NamedValue(Of PreciseRandom) With {.Name = NameOf(T), .x = allRange} 'New PreciseRandom(10 ^ 3, 10 ^ 10)
+        'Dim V As New NamedValue(Of PreciseRandom) With {.Name = NameOf(V), .x = allRange} 'New PreciseRandom(10 ^ -6, 10)
+
+        'Dim p As New NamedValue(Of PreciseRandom) With {.Name = NameOf(p), .x = allRange} ' New PreciseRandom(10 ^ -5, 1)
+        'Dim c As New NamedValue(Of PreciseRandom) With {.Name = NameOf(c), .x = allRange} 'New PreciseRandom(10 ^ -5, 10)
+        'Dim beta As New NamedValue(Of PreciseRandom) With {.Name = NameOf(beta), .x = allRange} ' New PreciseRandom(10 ^ -10, 1)
+        'Dim delta As New NamedValue(Of PreciseRandom) With {.Name = NameOf(delta), .x = allRange} ' New PreciseRandom(10 ^ -5, 150)
 
 
 
-        Dim p As New NamedValue(Of PreciseRandom) With {.Name = NameOf(p), .x = New PreciseRandom(10 ^ -5, 1)}
-        Dim c As New NamedValue(Of PreciseRandom) With {.Name = NameOf(c), .x = New PreciseRandom(10 ^ -5, 10)}
-        Dim beta As New NamedValue(Of PreciseRandom) With {.Name = NameOf(beta), .x = New PreciseRandom(10 ^ -10, 1)}
-        Dim delta As New NamedValue(Of PreciseRandom) With {.Name = NameOf(delta), .x = New PreciseRandom(10 ^ -5, 150)}
-        Dim uid As New Uid
+        'For Each x In Bootstrapping(Of Kinetics_of_influenza_A_virus_infection_in_humans)({p, c, beta, delta}, {T, I, V}, Long.MaxValue, 10000, 0, 200)
+        '    Dim id As String = ++uid
+        '    Dim path As String = App.HOME & $"/be/{id.First}/{id}.csv"
+        '    Call x.DataFrame.Save(path, Encodings.ASCII)
+        'Next
 
-
-        Dim allRange As New PreciseRandom(-300, 100)
-
-        For Each x In allRange.Bootstrapping(Of Kinetics_of_influenza_A_virus_infection_in_humans)({"p", "c", "beta", "delta"}, {"T", "I", "V"}, Long.MaxValue, 10000, 0, 200)
-            Dim id As String = ++uid
-            Dim path As String = App.HOME & $"/be/{id.First}/{id}.csv"
-            Call x.DataFrame.Save(path, Encodings.ASCII)
-        Next
-
-        Pause()
+        'Pause()
 
 
 
@@ -104,25 +109,15 @@ Module Program
         'Call Scatter.Plot(result.FromODEs(, 10, 10)).SaveAs("./Ebola_virus_infection_modeling_and_identifiability_problems.png")
 
 
-        With New ddd
+        'With New ddd
 
-            Dim x As New RDotNET.Extensions.VisualBasic.var
+        '    Dim x As New RDotNET.Extensions.VisualBasic.var
 
-            .call = "x3 <- ff"
-
-
+        '    .call = "x3 <- ff"
 
 
-        End With
+
+
+        'End With
     End Sub
-
-
-    Class ddd
-
-        WriteOnly Property [call] As String
-            Set(value As String)
-
-            End Set
-        End Property
-    End Class
 End Module
