@@ -22,7 +22,7 @@ Module Program
 
         Dim observation As ODEsOut = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(10000, 0, 100)
 
-        Call MonteCarlo.Iterations(App.AssemblyName & ".exe", observation, 1000, 20, ).GetJson.__DEBUG_ECHO
+        Call MonteCarlo.Iterations(GetType(Model), observation, 1000, 20, ).GetJson.__DEBUG_ECHO
 
 
         'Dim sfsfds = ODEsOut.LoadFromDataFrame("X:\RNA-seq\be\1\1V.csv")
