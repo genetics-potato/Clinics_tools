@@ -20,10 +20,23 @@ Module Program
 
     Sub Main()
 
+        Dim estimate = "G:\Clinics_tools\InfectionDynamics\Kinetics_of_influenza_A_virus_infection_in_humans\iterates.json".ReadAllText.LoadObject(Of Dictionary(Of String, Dictionary(Of String, Double())))
+
+        For Each x In estimate.Values.First
+            Call $"{x.Key} -> {x.Value.Average},{x.Value.Min},{x.Value.Max}".__DEBUG_ECHO
+        Next
+
+
+        Call New Model().RunTest(estimate.Values.First, 10000, 0, 100, Function(x) x.Average).DataFrame("#Time").Save("x:\dddd.csv", Encodings.ASCII)
+
+        Pause()
+
         Dim observation As ODEsOut = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(10000, 0, 100)
+        Dim it As Dictionary(Of String, Dictionary(Of String, Double())) = Nothing
 
-        Call MonteCarlo.Iterations(GetType(Model), observation, 1000, 20, ).GetJson.__DEBUG_ECHO
-
+        Call MonteCarlo.Iterations(GetType(Model), observation, 10000, 20, parallel:=True, outIterates:=it, cut:=0.65).GetJson.__DEBUG_ECHO
+        Call it.GetJson.SaveTo("./iterates.json")
+        Call "job done!".__DEBUG_ECHO
 
         'Dim sfsfds = ODEsOut.LoadFromDataFrame("X:\RNA-seq\be\1\1V.csv")
 
