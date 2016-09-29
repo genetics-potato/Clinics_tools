@@ -31,12 +31,14 @@ Module Program
 
         'Pause()
 
-        Dim observation As ODEsOut = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(10000, 0, 20)
+        Dim observation As ODEsOut = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(50000, 0, 20)
         Dim it As Dictionary(Of String, Dictionary(Of String, Double)()) = Nothing
 
-        Call MonteCarlo.Iterations(GetType(Model), observation, 5000, 50, [stop]:=5, parallel:=True, outIterates:=it, cut:=0.9, partN:=1000).GetJson.__DEBUG_ECHO
+        Call MonteCarlo.Iterations(GetType(Model), observation, 50000, 50, parallel:=True, outIterates:=it, cut:=0.8, partN:=1000).GetJson.__DEBUG_ECHO
         Call it.GetJson.SaveTo("./iterates.json")
         Call "job done!".__DEBUG_ECHO
+
+        Pause()
 
         'Dim sfsfds = ODEsOut.LoadFromDataFrame("X:\RNA-seq\be\1\1V.csv")
 
