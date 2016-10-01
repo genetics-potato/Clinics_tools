@@ -10,11 +10,6 @@ Imports Microsoft.VisualBasic.Mathematical.diffEq
 Imports Microsoft.VisualBasic.Mathematical.Plots
 Imports Microsoft.VisualBasic.Mathematical.SyntaxAPI.MathExtension
 Imports Microsoft.VisualBasic.Serialization.JSON
-Imports RDotNET.Extensions.Bioinformatics.deSolve
-Imports RDotNET.Extensions.Bioinformatics.deSolve.API
-Imports RDotNET.Extensions.VisualBasic
-Imports RDotNET.Extensions.VisualBasic.API.base
-Imports RDotNET.Extensions.VisualBasic.API.utils
 
 Module Program
 

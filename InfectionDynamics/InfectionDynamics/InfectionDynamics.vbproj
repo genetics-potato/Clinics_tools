@@ -149,18 +149,6 @@
       <Project>{85E71B4B-9276-4EC8-AADC-C849205F1EA8}</Project>
       <Name>Microsoft.VisualBasic.Imaging</Name>
     </ProjectReference>
-    <ProjectReference Include="G:\R.Bioinformatics\RDotNet.Extensions.Bioinformatics\RDotNet.Extensions.Bioinformatics.vbproj">
-      <Project>{485965cd-da31-4517-86f6-94dfd28379c1}</Project>
-      <Name>RDotNet.Extensions.Bioinformatics</Name>
-    </ProjectReference>
-    <ProjectReference Include="G:\R.Bioinformatics\RDotNET.Extensions.VisualBasic\RDotNET.Extensions.VisualBasic.vbproj">
-      <Project>{ab6e71b0-1be2-4418-ab4b-91d5554cf5a1}</Project>
-      <Name>RDotNET.Extensions.VisualBasic</Name>
-    </ProjectReference>
-    <ProjectReference Include="G:\R.Bioinformatics\RDotNET\RDotNet.vbproj">
-      <Project>{21c35138-455b-4833-9756-b2629f972a22}</Project>
-      <Name>RDotNet</Name>
-    </ProjectReference>
     <ProjectReference Include="G:\VisualBasic_AppFramework\Data_science\Mathematical\Math\Microsoft.VisualBasic.Mathematical.vbproj">
       <Project>{e3367b88-5d0c-495a-8273-331656d4b5aa}</Project>
       <Name>Microsoft.VisualBasic.Mathematical</Name>
