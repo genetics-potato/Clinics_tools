@@ -7,7 +7,6 @@ Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Mathematical
 Imports Microsoft.VisualBasic.Mathematical.BasicR
 Imports Microsoft.VisualBasic.Mathematical.diffEq
-Imports Microsoft.VisualBasic.Mathematical.Plots
 Imports Microsoft.VisualBasic.Mathematical.SyntaxAPI.MathExtension
 Imports Microsoft.VisualBasic.Serialization.JSON
 
