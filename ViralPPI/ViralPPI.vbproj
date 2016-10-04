@@ -73,6 +73,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -92,6 +93,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICTV\SpeciesList.vb" />
     <Compile Include="Program.vb" />
     <Compile Include="SiteMatches.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -152,6 +154,7 @@
       <Name>+Microsoft.VisualBasic.Architecture.Framework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
