@@ -23,13 +23,13 @@ Public NotInheritable Class GlobalMembersGumbel1
 
 
 
-	Public Shared Function gsl_cdf_gumbel1_P(x As Double, a As Double, b As Double) As Double
+	Public Function gsl_cdf_gumbel1_P(x As Double, a As Double, b As Double) As Double
 		Dim u As Double = a * x - Math.Log(b)
 		Dim P As Double = Math.Exp(-Math.Exp(-u))
 		Return P
 	End Function
 
-	Public Shared Function gsl_cdf_gumbel1_Q(x As Double, a As Double, b As Double) As Double
+	Public Function gsl_cdf_gumbel1_Q(x As Double, a As Double, b As Double) As Double
 		Dim u As Double = a * x - Math.Log(b)
 		Dim Q As Double
 		Dim P As Double = Math.Exp(-Math.Exp(-u))

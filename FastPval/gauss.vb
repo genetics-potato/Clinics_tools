@@ -61,7 +61,7 @@ Public NotInheritable Class GlobalMembersGauss
 
 
 
-    Friend Shared Function get_del(x As Double, rational As Double) As Double
+    Friend Function get_del(x As Double, rational As Double) As Double
         Dim xsq As Double = 0.0
         Dim del As Double = 0.0
         Dim result As Double = 0.0
@@ -79,7 +79,7 @@ Public NotInheritable Class GlobalMembersGauss
     '     * Normal cdf for fabs(x) < 0.66291
     '     
 
-    Friend Shared Function gauss_small(x As Double) As Double
+    Friend Function gauss_small(x As Double) As Double
         Dim i As UInteger
         Dim result As Double = 0.0
         Dim xsq As Double
@@ -107,7 +107,7 @@ Public NotInheritable Class GlobalMembersGauss
     '     * Normal cdf for 0.66291 < fabs(x) < sqrt(32).
     '     
 
-    Friend Shared Function gauss_medium(x As Double) As Double
+    Friend Function gauss_medium(x As Double) As Double
         Dim i As UInteger
         Dim temp As Double = 0.0
         Dim result As Double = 0.0
@@ -142,7 +142,7 @@ Public NotInheritable Class GlobalMembersGauss
     '     * {sqrt(32) < x < GAUSS_XUPPER} union { GAUSS_XLOWER < x < -sqrt(32) }.
     '     
 
-    Friend Shared Function gauss_large(x As Double) As Double
+    Friend Function gauss_large(x As Double) As Double
         Dim i As Integer
         Dim result As Double
         Dim xsq As Double
@@ -172,7 +172,7 @@ Public NotInheritable Class GlobalMembersGauss
         Return result
     End Function
 
-    Public Shared Function gsl_cdf_ugaussian_P(x As Double) As Double
+    Public Function gsl_cdf_ugaussian_P(x As Double) As Double
         Dim result As Double
         Dim absx As Double = Math.Abs(x)
 
@@ -207,7 +207,7 @@ Public NotInheritable Class GlobalMembersGauss
         Return result
     End Function
 
-    Public Shared Function gsl_cdf_ugaussian_Q(x As Double) As Double
+    Public Function gsl_cdf_ugaussian_Q(x As Double) As Double
         Dim result As Double
         Dim absx As Double = Math.Abs(x)
 
@@ -250,11 +250,11 @@ Public NotInheritable Class GlobalMembersGauss
         Return result
     End Function
 
-    Public Shared Function gsl_cdf_gaussian_P(x As Double, sigma As Double) As Double
+    Public Function gsl_cdf_gaussian_P(x As Double, sigma As Double) As Double
         Return GlobalMembersGauss.gsl_cdf_ugaussian_P(x / sigma)
     End Function
 
-    Public Shared Function gsl_cdf_gaussian_Q(x As Double, sigma As Double) As Double
+    Public Function gsl_cdf_gaussian_Q(x As Double, sigma As Double) As Double
         Return GlobalMembersGauss.gsl_cdf_ugaussian_Q(x / sigma)
     End Function
 End Class
