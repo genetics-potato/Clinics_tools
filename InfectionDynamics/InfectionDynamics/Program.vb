@@ -25,10 +25,10 @@ Module Program
 
         'Pause()
 
-        Dim observation As ODEsOut = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(1000000, 0, 20)
+        Dim observation As ODEsOut = New Kinetics_of_influenza_A_virus_infection_in_humans().Solve(10000, 0, 20)
         Dim it As Dictionary(Of String, Dictionary(Of String, Double)()) = Nothing
 
-        Call MonteCarlo.Iterations(GetType(Model), observation, 1000, 50, parallel:=True, outIterates:=it, cut:=0.95, partN:=10000).GetJson.__DEBUG_ECHO
+        Call MonteCarlo.Iterations(GetType(Model), observation, 1000, 50, parallel:=True, outIterates:=it, cut:=0.95, partN:=1000).GetJson.__DEBUG_ECHO
         Call it.GetJson.SaveTo("./iterates.json")
         Call "job done!".__DEBUG_ECHO
 
