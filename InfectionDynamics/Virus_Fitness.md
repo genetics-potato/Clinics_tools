@@ -12,12 +12,12 @@ When we are concerned with between host evolution; we usually define fitness by 
 
 |Author|Title|Year|Journal/Proceedings|Reftype|DOI/URL|
 |------|------|------|------|------|------|
-|Alizon, S., Hurford, A., Mideo, N. & Van Baalen, M.|Virulence evolution and the trade-off hypothesis: history, current state of affairs and the future|2009|Journal of Evolutionary Biology|Vol. 22(2), pp. 245-259|article|http://dx.doi.org/10.1111/j.1420-9101.2008.01658.x| 
+|Alizon, S., Hurford, A., Mideo, N. & Van Baalen, M.|Virulence evolution and the trade-off hypothesis: history, current state of affairs and the future|2009|Journal of Evolutionary Biology Vol. 22(2), pp. 245-259|article|http://dx.doi.org/10.1111/j.1420-9101.2008.01658.x| 
 |Astier, S., Albouy, J., Moury, V., Robaglia, C. & Lecoq, H.|Principles of plant virology, genome, pathogenicity, virus ecology|2008||book|| 
 |Flint, S., Enquist, L., Krug, L., Racaniello, V. & Skalka, A.|Principles of virology: molecular biology, pathogenesis, and control|2000||book||	 
-|Frank, S.A.|Models of Parasite Virulence|1996|The Quarterly Review of Biology|Vol. 71(1), pp. 37-78|article|http://www.journals.uchicago.edu/doi/abs/10.1086/419267| 
+|Frank, S.A.|Models of Parasite Virulence|1996|The Quarterly Review of Biology Vol. 71(1), pp. 37-78|article|http://www.journals.uchicago.edu/doi/abs/10.1086/419267| 
 |Futuyma, D.|Evolutionary biology 3rd edition|1998||book||
-|Nowak, M.|Evolutionary Dynamics—Exploring the Equations of Life|2006|book|| 
+|Nowak, M.|Evolutionary Dynamics—Exploring the Equations of Life|2006||book|| 
 |Poulin, R.|Evolutionary ecology of parasites|2007||book|| 
 |Rice, S.|Evolutionary theory|2004||book||
-|Sacrisan, S. & Garcia-Arenal, F.|The evolution of virulence and pathogenicity in plant pathogen populations|2008|Molecular Plant Pathology|Vol. 9(3), pp. 369-384|article|http://dx.doi.org/10.1111/j.1364-3703.2007.00460.x| 
+|Sacrisan, S. & Garcia-Arenal, F.|The evolution of virulence and pathogenicity in plant pathogen populations|2008|Molecular Plant Pathology Vol. 9(3), pp. 369-384|article|http://dx.doi.org/10.1111/j.1364-3703.2007.00460.x| 
