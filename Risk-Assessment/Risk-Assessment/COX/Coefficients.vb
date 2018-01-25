@@ -3,6 +3,7 @@ Imports System.Text
 Imports Microsoft.VisualBasic.Data.csv
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
+Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Text
 Imports RDotNET.Extensions.Bioinformatics
@@ -18,6 +19,14 @@ Namespace COX
     ''' > https://en.wikipedia.org/wiki/Proportional_hazards_model
     ''' </summary>
     Public Module Coefficients
+
+        Public Function Hazard(h0#, b As Dictionary(Of String, Double), X As Dictionary(Of String, Double)) As Double
+            Dim names$() = b.Keys.ToArray
+            Dim coeff As Vector = names.Select(Function(key) b(key)).AsVector
+            Dim factors As Vector = names.Select(Function(key) X(key)).AsVector
+            Dim ht = h0 * Math.Exp((coeff * factors).Sum)
+            Return ht
+        End Function
 
         ''' <summary>
         ''' 通过这个训练函数会生成H(t)，危险率函数，实际上是一个条件瞬间死亡率。
