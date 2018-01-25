@@ -23,15 +23,12 @@ Namespace COX
         ''' 通过这个训练函数会生成H(t)，危险率函数，实际上是一个条件瞬间死亡率。
         ''' </summary>
         ''' <param name="model"></param>
-        ''' <param name="H0#"></param>
         ''' <param name="names">
         ''' The factor name alias, the key in this dictionary table should be the key names in <see cref="Model.Properties"/>.
         ''' </param>
         ''' <returns></returns>
         <Extension>
-        Public Function Training(model As IEnumerable(Of Model),
-                             H0#,
-                             Optional names As Dictionary(Of String, String) = Nothing) As Dictionary(Of String, Double)
+        Public Function Training(model As IEnumerable(Of Model), Optional names As Dictionary(Of String, String) = Nothing) As Dictionary(Of String, Double)
 
             Dim table As Model() = model.ToArray
             Dim data = read.csv(file:=table.tempData)
