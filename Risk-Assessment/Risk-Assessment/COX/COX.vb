@@ -1,8 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports Microsoft.VisualBasic.Data.csv
-Imports Microsoft.VisualBasic.Data.csv.IO
-Imports Microsoft.VisualBasic.Data.csv.StorageProvider.Reflection
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Scripting.Runtime
@@ -33,12 +31,12 @@ Public Module COX
                              H0#,
                              Optional names As Dictionary(Of String, String) = Nothing) As Dictionary(Of String, Double)
 
+        Dim table As Model() = model.ToArray
+        Dim data = read.csv(file:=table.tempData)
+
         ' R server code
         ' 进行COX模型的回归训练
         require("survival")
-
-        Dim table As Model() = model.ToArray
-        Dim data = read.csv(file:=table.tempData)
 
         ' 回归模型的方程
         ' formula <- Surv(time, status) ~ taxonomy1 + taxonomy2 + ... - 1
@@ -103,30 +101,3 @@ Public Module COX
         End Function
     End Class
 End Module
-
-Public Class Model : Inherits DataSet
-
-    Public Property time As Double
-    <Column("status", GetType(COX.statusCode))>
-    Public Property status As COXstatus
-
-    Public Overrides Function ToString() As String
-        Return $"[{ID}] {time}, {status.Description}"
-    End Function
-End Class
-
-''' <summary>
-''' + 1 是正常无患病的截尾数据
-''' + 2 表示患病了
-''' </summary>
-Public Enum COXstatus As Integer
-
-    ''' <summary>
-    ''' 没有发生死亡事件的截尾数据
-    ''' </summary>
-    Censored = 1
-    ''' <summary>
-    ''' 发生了死亡事件
-    ''' </summary>
-    Die = 2
-End Enum

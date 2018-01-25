@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FF943679-611F-453C-8195-3D7382DC2A60}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Risk_Assessment</RootNamespace>
-    <AssemblyName>Risk-Assessment</AssemblyName>
+    <RootNamespace>SMRUCC.Clinic.RiskAssessment</RootNamespace>
+    <AssemblyName>SMRUCC.Clinic.RiskAssessment</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
@@ -18,7 +18,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Risk-Assessment.xml</DocumentationFile>
+    <DocumentationFile>SMRUCC.Clinic.RiskAssessment.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -27,7 +27,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Risk-Assessment.xml</DocumentationFile>
+    <DocumentationFile>SMRUCC.Clinic.RiskAssessment.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -64,7 +64,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="COX.vb" />
+    <Compile Include="COX\Model.vb" />
+    <Compile Include="COX\COX.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
