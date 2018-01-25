@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports System.Text
 Imports Microsoft.VisualBasic.Data.csv
+Imports Microsoft.VisualBasic.Data.csv.IO
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.Scripting
@@ -10,6 +11,7 @@ Imports RDotNET.Extensions.Bioinformatics
 Imports RDotNET.Extensions.VisualBasic.API.base
 Imports RDotNET.Extensions.VisualBasic.API.utils
 Imports RDotNET.Extensions.VisualBasic.SymbolBuilder
+Imports csv = Microsoft.VisualBasic.Data.csv.IO.File
 
 Namespace COX
 
@@ -54,9 +56,10 @@ Namespace COX
         ''' <returns></returns>
         <Extension>
         Public Function Training(model As IEnumerable(Of Model), Optional project$() = Nothing, Optional names As Dictionary(Of String, String) = Nothing) As Dictionary(Of String, Double)
+            Dim keys$() = project Or model.First.Properties.Keys.ToArray.AsDefault
             Dim table As Model() = model _
                 .Select(Function(m)
-                            Return m.Project(names:=project)
+                            Return m.Project(names:=keys)
                         End Function) _
                 .ToArray
             Dim data = read.csv(file:=table.tempData)
@@ -109,10 +112,35 @@ Namespace COX
 
         <Extension>
         Private Function tempData(model As Model()) As String
+            Dim csv As csv = Nothing
+
             With App.GetAppSysTempFile(".csv", App.PID)
                 Call model.SaveTo(.ref, strict:=False, encoding:=Encoding.ASCII)
+                Call csv.SetValue(
+                    File.Load(.ref) _
+                        .Columns _
+                        .Select(AddressOf stripNA) _
+                        .JoinColumns)
+                Call csv.Save(.ref, Encoding.ASCII)
+
                 Return .ref
             End With
+        End Function
+
+        Private Function stripNA(s As String) As String
+            If s.TextEquals("NaN") OrElse s = "非数字" OrElse s = "???" Then
+                Return "NA"
+            ElseIf Val(s).IsNaNImaginary Then
+                Return "NA"
+            Else
+                Return s
+            End If
+        End Function
+
+        Private Function stripNA(col As String()) As String()
+            Return col _
+                .Select(AddressOf stripNA) _
+                .ToArray
         End Function
 
         Friend Class statusCode : Implements IParser
