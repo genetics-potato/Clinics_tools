@@ -4,6 +4,7 @@ Imports Microsoft.VisualBasic.Data.csv
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
+Imports Microsoft.VisualBasic.Math.Scripting
 Imports Microsoft.VisualBasic.Scripting.Runtime
 Imports Microsoft.VisualBasic.Text
 Imports RDotNET.Extensions.Bioinformatics
@@ -20,12 +21,28 @@ Namespace COX
     ''' </summary>
     Public Module Coefficients
 
-        Public Function Hazard(h0#, b As Dictionary(Of String, Double), X As Dictionary(Of String, Double)) As Double
-            Dim names$() = b.Keys.ToArray
-            Dim coeff As Vector = names.Select(Function(key) b(key)).AsVector
-            Dim factors As Vector = names.Select(Function(key) X(key)).AsVector
-            Dim ht = h0 * Math.Exp((coeff * factors).Sum)
+        Public Function Hazard(h0#, b As NamedVector, X As NamedVector) As Double
+            Dim ht = h0 * Math.Exp((b * X).Sum)
             Return ht
+        End Function
+
+        Public Function SurvivalProbability(h0#, b As NamedVector, X As NamedVector) As Double
+            Dim s0 = 1 - h0
+            Dim st = s0 ^ Math.Exp((b * X).Sum)
+            Return st
+        End Function
+
+        ''' <summary>
+        ''' FoldChange compare between the condition <paramref name="X1"/> and <paramref name="X2"/>.
+        ''' </summary>
+        ''' <param name="b"></param>
+        ''' <param name="X1"></param>
+        ''' <param name="X2"></param>
+        ''' <returns></returns>
+        Public Function FoldChange(b As NamedVector, X1 As NamedVector, X2 As NamedVector) As Double
+            Dim x = Math.Exp((b * X1).Sum)
+            Dim y = Math.Exp((b * X2).Sum)
+            Return x / y
         End Function
 
         ''' <summary>
