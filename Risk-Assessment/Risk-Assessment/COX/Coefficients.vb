@@ -53,9 +53,12 @@ Namespace COX
         ''' </param>
         ''' <returns></returns>
         <Extension>
-        Public Function Training(model As IEnumerable(Of Model), Optional names As Dictionary(Of String, String) = Nothing) As Dictionary(Of String, Double)
-
-            Dim table As Model() = model.ToArray
+        Public Function Training(model As IEnumerable(Of Model), Optional project$() = Nothing, Optional names As Dictionary(Of String, String) = Nothing) As Dictionary(Of String, Double)
+            Dim table As Model() = model _
+                .Select(Function(m)
+                            Return m.Project(names:=project)
+                        End Function) _
+                .ToArray
             Dim data = read.csv(file:=table.tempData)
 
             ' R server code

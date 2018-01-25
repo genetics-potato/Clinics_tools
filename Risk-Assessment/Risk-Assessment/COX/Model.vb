@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic.Data.csv.IO
+﻿Imports System.Runtime.CompilerServices
+Imports Microsoft.VisualBasic.Data.csv.IO
 Imports Microsoft.VisualBasic.Data.csv.StorageProvider.Reflection
 
 Namespace COX
@@ -11,6 +12,16 @@ Namespace COX
 
         Public Overrides Function ToString() As String
             Return $"[{ID}] {time}, {status.Description}"
+        End Function
+
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Function Project(names$()) As Model
+            Return New Model With {
+                .Properties = Properties.Subset(keys:=names),
+                .ID = ID,
+                .status = status,
+                .time = time
+            }
         End Function
     End Class
 
