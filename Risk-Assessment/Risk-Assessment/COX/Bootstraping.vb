@@ -12,7 +12,9 @@ Namespace COX
         ''' <summary>
         ''' 
         ''' </summary>
-        ''' <param name="pcts">``{time -> hazard_ratio}``</param>
+        ''' <param name="pcts">
+        ''' The hazard ratio in different time span. ``{time -> hazard_ratio}``
+        ''' </param>
         ''' <param name="sampleSize%">观测的总人数</param>
         ''' <returns></returns>
         ''' 
@@ -59,6 +61,12 @@ Namespace COX
 
                 Call setCensored(individual)
                 Call samples.Add(individual)
+            Next
+
+            Dim uid As New Uid(caseSensitive:=True)
+
+            For Each individual As Model In samples
+                individual.ID = ++uid
             Next
 
             Return samples
