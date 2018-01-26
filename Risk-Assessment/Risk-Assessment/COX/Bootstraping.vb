@@ -31,7 +31,7 @@ Namespace COX
             Dim timeRange As DoubleRange
             Dim lastRange As Double
 
-            Console.WriteLine()
+            cat("\n\n")
 
             For Each time As (time#, pct#) In pcts _
                 .OrderBy(Function(t) t.Key) _
@@ -55,11 +55,11 @@ Namespace COX
                 sampleSize -= n
 
                 ' 为了进行分隔，在所打印的消息后面是有一个空格的
-                Call Console.Write($"{n}/{sampleSize}  ")
+                cat($"{n}/{sampleSize}  ")
             Next
 
-            Console.WriteLine()
-            Console.WriteLine()
+            cat("\n\n")
+
             timeRange = {
                 timeBegin,
                 timeBegin + 2 * (timeBegin - lastRange)
