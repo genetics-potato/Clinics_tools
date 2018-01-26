@@ -105,6 +105,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="COX\Correlation.vb" />
     <Compile Include="COX\Model.vb" />
     <Compile Include="COX\Coefficients.vb" />
     <Compile Include="COX\Functions.vb" />
