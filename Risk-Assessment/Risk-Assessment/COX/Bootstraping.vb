@@ -19,12 +19,19 @@ Namespace COX
         ''' <returns></returns>
         ''' 
         <Extension>
-        Public Function CreateSample(pcts As Dictionary(Of Double, Double), timeBegin#, setHazard As SetIndividualStatus, setCensored As SetIndividualStatus, Optional sampleSize% = 1000) As Model()
+        Public Function CreateSample(pcts As Dictionary(Of Double, Double),
+                                     timeBegin#,
+                                     setHazard As SetIndividualStatus,
+                                     setCensored As SetIndividualStatus,
+                                     Optional sampleSize% = 1000) As Model()
+
             Dim samples As New List(Of Model)
             Dim rand As New Random
             Dim n%
             Dim timeRange As DoubleRange
             Dim lastRange As Double
+
+            Console.WriteLine()
 
             For Each time As (time#, pct#) In pcts _
                 .OrderBy(Function(t) t.Key) _
@@ -46,8 +53,13 @@ Namespace COX
                 lastRange = timeBegin
                 timeBegin = time.time
                 sampleSize -= n
+
+                ' 为了进行分隔，在所打印的消息后面是有一个空格的
+                Call Console.Write($"{n}/{sampleSize}  ")
             Next
 
+            Console.WriteLine()
+            Console.WriteLine()
             timeRange = {
                 timeBegin,
                 timeBegin + 2 * (timeBegin - lastRange)
@@ -56,7 +68,7 @@ Namespace COX
             For i As Integer = 0 To sampleSize - 1
                 Dim individual As New Model With {
                     .time = rand.NextDouble(timeRange),
-                    .status = COXstatus.Die
+                    .status = COXstatus.Censored
                 }
 
                 Call setCensored(individual)
