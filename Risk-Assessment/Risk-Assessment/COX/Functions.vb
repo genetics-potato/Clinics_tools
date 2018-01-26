@@ -64,8 +64,8 @@ Namespace COX
             Next
 
             Dim serial As New SerialData With {
-                .color = Color.Black,
-                .lineType = DashStyle.Dash,
+                .color = Color.Blue,
+                .lineType = DashStyle.Solid,
                 .PointSize = pointSize,
                 .pts = curve _
                     .Select(Function(p)
