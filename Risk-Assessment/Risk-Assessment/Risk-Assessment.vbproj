@@ -106,6 +106,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FRS\Scoring10\BMIBased.vb" />
     <Compile Include="FRS\Scoring10\Coefficients.vb" />
     <Compile Include="FRS\Scoring10\LipidsBased.vb" />
     <Compile Include="FRS\Scoring30\BMIBased.vb" />
@@ -115,7 +116,7 @@
     <Compile Include="COX\Coefficients.vb" />
     <Compile Include="COX\Functions.vb" />
     <Compile Include="COX\Bootstraping.vb" />
-    <Compile Include="FRS\Scoring10\BMIBased.vb" />
+    <Compile Include="FRS\Scoring10\Algorithm.vb" />
     <Compile Include="FRS\Scoring30\Extensions.vb" />
     <Compile Include="FRS\Risk.vb" />
     <Compile Include="FRS\Scoring30\LipidsBased.vb" />
