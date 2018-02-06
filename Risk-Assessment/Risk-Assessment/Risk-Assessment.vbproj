@@ -106,11 +106,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FRS\Model.vb" />
     <Compile Include="COX\Correlation.vb" />
     <Compile Include="COX\Model.vb" />
     <Compile Include="COX\Coefficients.vb" />
     <Compile Include="COX\Functions.vb" />
     <Compile Include="COX\Bootstraping.vb" />
+    <Compile Include="FRS\Scoring10.vb" />
+    <Compile Include="FRS\Scoring30.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
