@@ -1,5 +1,6 @@
 ﻿Imports Microsoft.VisualBasic.ComponentModel.Algorithm.base
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
+Imports Microsoft.VisualBasic.Serialization.JSON
 
 Namespace FRS
 
@@ -458,35 +459,41 @@ Namespace FRS
             Dim X5 = Math.Exp(U11 - X2)
 
             ' set F
-            F($"0,{Math.Min(E.Length, F.Length) - 1}") = E ^ W5
-            ' For i As Integer = 0 To E.Length && i < F.Length; i++) {
+            F($"0:{Math.Min(E.Length, F.Length) - 1}") = E ^ W5
+            ' for(i = 0; i < E.Length && i < F.Length; i++) {
             '     F[i] = Math.Pow(E[i], W5);
             ' }
 
             ' set G
-            G($"0,{E.Length}") = E.SlideWindows(2).Select(Function(w) Math.Log(w(0)) - Math.Log(w(1))).AsList
-            '          For (i = 0; i + 1 < E.length; i++) {
-            '	G[i] = Math.Log(E[i]) - Math.Log(E[i + 1]);
-            '}
+            G($"0:{E.Length - 1}") = E _
+                .SlideWindows(slideWindowSize:=2) _
+                .Select(Function(w)
+                            Return Math.Log(w(0)) - Math.Log(w(1))
+                        End Function) _
+                .AsList
+            ' for (i = 0; i + 1 < E.length; i++) {
+            '     G[i] = Math.Log(E[i]) - Math.Log(E[i + 1]);
+            ' }
 
             ' set K
-            K($"0,{Math.Min(K.Length, J.Length) - 1}") = J ^ X5
-            '          For (i = 0; i < K.length && i < J.length; i++) {
-            '	K[i] = Math.Pow(J[i], X5);
-            '}
+            K($"0:{Math.Min(K.Length, J.Length) - 1}") = J ^ X5
+            ' for (i = 0; i < K.length && i < J.length; i++) {
+            '     K[i] = Math.Pow(J[i], X5);
+            ' }
 
             ' set M
             M(0) = W5 * (-Math.Log(E(0)))
-            M($"1,{ {M.Length, F.Length, K.Length, G.Length}.Min }") = F * K * W5 * G
-            '          For (i = 0; i + 1 < M.length && i < F.length && i < K.length && i < G.length; i++) {
-            '	M[i + 1] = F[i] * K[i] * W5 * G[i];
-            '}
+            M($"1:{ {M.Length, F.Length, K.Length, G.Length}.Min - 1 }") = F * K * W5 * G
+            ' for (i = 0; i + 1 < M.length && i < F.length && i < K.length && i < G.length; i++) {
+            '     M[i + 1] = F[i] * K[i] * W5 * G[i];
+            ' }
 
             ' now we can calculate the risk values
             Dim fullRisk = M.Where(Function(x) Not x.IsNaNImaginary).Sum
-            '          For (i = 0; i < M.length && !isNaN(M[i]); i++) {
-            '	fullRisk = fullRisk + M[i];
-            '}
+            ' for (i = 0; i < M.length && !isNaN(M[i]); i++) {
+            '     fullRisk = fullRisk + M[i];
+            ' }
+
             Return Math.Round(100 * fullRisk)
         End Function
     End Module
@@ -497,5 +504,8 @@ Namespace FRS
         Public Property optimalRisk As Double
         Public Property normalRisk As Double
 
+        Public Overrides Function ToString() As String
+            Return Me.GetJson
+        End Function
     End Class
 End Namespace

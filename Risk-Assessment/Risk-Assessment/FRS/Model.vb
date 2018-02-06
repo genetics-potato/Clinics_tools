@@ -1,6 +1,6 @@
 ﻿Namespace FRS
 
-    Public Class Model
+    Public Class FRSModel
 
         Public Property Age As Integer
         ''' <summary>
