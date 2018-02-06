@@ -9,6 +9,7 @@ Namespace FRS
 
             Public age, sbp, bmi, smoker, diabetes As Double
             Public gender, trtbp As Double
+            Public tcl, hdl As Double
 
             Public Shared ReadOnly Keys As String()
             Public Shared ReadOnly fieldReader As Dictionary(Of String, Func(Of Coefficients, Double))
@@ -54,6 +55,8 @@ Namespace FRS
                 Me.sbp = mine.SBP
                 Me.smoker = If(mine.Smoking, 1, 0)
                 Me.trtbp = If(mine.TreatedHypertension, 1, 0)
+                Me.tcl = mine.TC
+                Me.hdl = mine.HDL
             End Sub
 
             <MethodImpl(MethodImplOptions.AggressiveInlining)>
@@ -65,7 +68,9 @@ Namespace FRS
                     .sbp = sbp,
                     .smoker = smoker,
                     .gender = gender,
-                    .trtbp = trtbp
+                    .trtbp = trtbp,
+                    .hdl = hdl,
+                    .tcl = tcl
                 }
             End Function
         End Class
