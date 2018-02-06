@@ -899,15 +899,4 @@ Namespace FRS
             Return Math.Round(100 * hardRisk)
         End Function
     End Module
-
-    Public Class Score30
-
-        Public Property risk As Double
-        Public Property optimalRisk As Double
-        Public Property normalRisk As Double
-
-        Public Overrides Function ToString() As String
-            Return Me.GetJson
-        End Function
-    End Class
 End Namespace
