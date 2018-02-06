@@ -56,8 +56,8 @@ Namespace FRS
         ''' 
         ''' Note that -1 means something went wrong, otherwise it will be the percent risk.
         ''' </returns>
-        Public Function calculateFullRiskNoBmi(age#, isMale As Boolean, systolicBp#, cholesterol#, hdl#, smoker As Boolean, treatedBp As Boolean, diabetic As Boolean) As Score30
-            Dim returnObj As New Score30 With {
+        Public Function calculateFullRiskNoBmi(age#, isMale As Boolean, systolicBp#, cholesterol#, hdl#, smoker As Boolean, treatedBp As Boolean, diabetic As Boolean) As Risk
+            Dim returnObj As New Risk With {
                 .risk = calculateFullRiskNoBmiInternal(age, isMale, systolicBp, cholesterol, hdl, smoker, treatedBp, diabetic),
                 .optimalRisk = calculateFullRiskNoBmiInternal(age, isMale, 110, 160, 60, False, False, False),
                 .normalRisk = calculateFullRiskNoBmiInternal(age, isMale, 125, 180, 45, False, False, False)
@@ -521,8 +521,8 @@ Namespace FRS
         ''' 
         ''' Note that -1 means something went wrong, otherwise it will be the percent risk.
         ''' </returns>
-        Public Function calculateHardRiskNoBmi(age#, isMale As Boolean, systolicBp#, cholesterol#, hdl#, smoker As Boolean, treatedBp As Boolean, diabetic As Boolean) As Score30
-            Dim returnObj As New Score30 With {
+        Public Function calculateHardRiskNoBmi(age#, isMale As Boolean, systolicBp#, cholesterol#, hdl#, smoker As Boolean, treatedBp As Boolean, diabetic As Boolean) As Risk
+            Dim returnObj As New Risk With {
                 .risk = calculateHardRiskNoBmiInternal(age, isMale, systolicBp, cholesterol, hdl, smoker, treatedBp, diabetic),
                 .optimalRisk = calculateHardRiskNoBmiInternal(age, isMale, 110, 160, 60, False, False, False),
                 .normalRisk = calculateHardRiskNoBmiInternal(age, isMale, 125, 180, 45, False, False, False)

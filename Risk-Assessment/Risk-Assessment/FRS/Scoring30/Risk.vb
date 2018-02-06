@@ -29,7 +29,7 @@ Namespace FRS
     ''' |Optimal Risk Of Hard CVD|	 11 %   |
     ''' |Normal Risk Of Hard CVD |	 13 %   |
     ''' </remarks>
-    Public Class Score30
+    Public Class Risk
 
         Public Property risk As Double
         Public Property optimalRisk As Double

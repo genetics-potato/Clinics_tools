@@ -114,6 +114,7 @@
     <Compile Include="COX\Functions.vb" />
     <Compile Include="COX\Bootstraping.vb" />
     <Compile Include="FRS\Scoring10.vb" />
+    <Compile Include="FRS\Scoring30\Extensions.vb" />
     <Compile Include="FRS\Scoring30\Risk.vb" />
     <Compile Include="FRS\Scoring30\LipidsBased.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
