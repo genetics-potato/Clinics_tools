@@ -1,4 +1,7 @@
-﻿Namespace FRS
+﻿Imports Microsoft.VisualBasic.ComponentModel.Algorithm.base
+Imports Microsoft.VisualBasic.Math.LinearAlgebra
+
+Namespace FRS
 
     ''' <summary>
     ''' ##### Framingham Risk Score
@@ -52,17 +55,17 @@
         ''' 
         ''' Note that -1 means something went wrong, otherwise it will be the percent risk.
         ''' </returns>
-        Public Function calculateFullRiskNoBmi(age, isMale, systolicBp, cholesterol, hdl, smoker, treatedBp, diabetic) As Score30
-            Dim returnObj As New Score30 With {.risk = -1.0, .optimalRisk = -1.0, .normalRisk = -1.0}
-            returnObj.risk = calculateFullRiskNoBmiInternal(age, isMale, systolicBp, cholesterol, hdl, smoker, treatedBp, diabetic)
-            returnObj.optimalRisk = calculateFullRiskNoBmiInternal(age, isMale, 110, 160, 60, False, False, False)
-            returnObj.normalRisk = calculateFullRiskNoBmiInternal(age, isMale, 125, 180, 45, False, False, False)
+        Public Function calculateFullRiskNoBmi(age#, isMale As Boolean, systolicBp#, cholesterol#, hdl#, smoker As Boolean, treatedBp As Boolean, diabetic As Boolean) As Score30
+            Dim returnObj As New Score30 With {
+                .risk = calculateFullRiskNoBmiInternal(age, isMale, systolicBp, cholesterol, hdl, smoker, treatedBp, diabetic),
+                .optimalRisk = calculateFullRiskNoBmiInternal(age, isMale, 110, 160, 60, False, False, False),
+                .normalRisk = calculateFullRiskNoBmiInternal(age, isMale, 125, 180, 45, False, False, False)
+            }
             Return returnObj
         End Function
 
-        Private Function calculateFullRiskNoBmiInternal(age, isMale, systolicBp, cholesterol, hdl, smoker, treatedBp, diabetic) As Double
-            Dim i = 0 ' loop invariant
-            Dim E = {
+        Private Function calculateFullRiskNoBmiInternal(age#, isMale As Boolean, systolicBp#, cholesterol#, hdl#, smoker As Boolean, treatedBp As Boolean, diabetic As Boolean) As Double
+            Dim E As Vector = {
                 0.999874296, 0.999874296, 0.999874296, 0.999748519, 0.999622704, 0.999622704, 0.999496803,
                 0.999370849, 0.999370849, 0.999370849, 0.999244705, 0.999244705, 0.99911853, 0.99911853, 0.99911853,
                 0.998992174, 0.998865757, 0.998739283, 0.998612704, 0.998612704, 0.998612704, 0.998486005, 0.998359261,
@@ -232,7 +235,7 @@
                 0.838354766, 0.838354766, 0.838354766, 0.838095497, 0.838095497, 0.837835339, 0.837835339, 0.837574313,
                 0.837574313, 0.837312793, 0.837312793, 0.837312793, 0.837312793
             }
-            Dim J = {
+            Dim J As Vector = {
                 1, 0.999874446, 0.999748865, 0.999748865, 0.999748865, 0.999623134, 0.999623134, 0.999623134,
                 0.999497251, 0.999371268, 0.999371268, 0.9992452, 0.9992452, 0.999119087, 0.998992881, 0.998992881,
                 0.998992881, 0.998992881, 0.998992881, 0.998866203, 0.998739535, 0.998739535, 0.998739535, 0.998739535,
@@ -403,6 +406,88 @@
                 0.917391013, 0.917115523, 0.916840007, 0.916564237
             }
 
+            Dim F As New Vector(1500)
+            Dim G As New Vector(1500)
+            Dim K As New Vector(1500)
+            Dim M As New Vector(1500)
+            Dim R2 = 0.34362
+            Dim R3 = 2.63588
+            Dim R4 = 1.8803
+            Dim R5 = 1.12673
+            Dim R6 = -0.90941
+            Dim R7 = 0.59397
+            Dim R8 = 0.5232
+            Dim R9 = 0.68602
+            Dim Q2 = If(isMale, 1, 0)
+            Dim Q3 = Math.Log(age)
+            Dim Q4 = Math.Log(systolicBp)
+            Dim Q5 = Math.Log(cholesterol)
+            Dim Q6 = Math.Log(hdl)
+            Dim Q7 = If(smoker, 1, 0)
+            Dim Q8 = If(treatedBp, 1, 0)
+            Dim Q9 = If(diabetic, 1, 0)
+            Dim S2 = Q2 * R2
+            Dim S3 = Q3 * R3
+            Dim S4 = Q4 * R4
+            Dim S5 = Q5 * R5
+            Dim S6 = Q6 * R6
+            Dim S7 = Q7 * R7
+            Dim S8 = Q8 * R8
+            Dim S9 = Q9 * R9
+            Dim S11 = S2 + S3 + S4 + S5 + S6 + S7 + S8 + S9
+            Dim T2 = 0.48123
+            Dim T3 = 3.39222
+            Dim T4 = 1.39862
+            Dim T5 = -0.00439
+            Dim T6 = 0.16081
+            Dim T7 = 0.99858
+            Dim T8 = 0.19035
+            Dim T9 = 0.49756
+            Dim U2 = Q2 * T2
+            Dim U3 = Q3 * T3
+            Dim U4 = Q4 * T4
+            Dim U5 = Q5 * T5
+            Dim U6 = Q6 * T6
+            Dim U7 = Q7 * T7
+            Dim U8 = Q8 * T8
+            Dim U9 = Q9 * T9
+            Dim U11 = U2 + U3 + U4 + U5 + U6 + U7 + U8 + U9
+            Dim W2 = 21.29326612
+            Dim W5 = Math.Exp(S11 - W2)
+            Dim X2 = 20.12840698
+            Dim X5 = Math.Exp(U11 - X2)
+
+            ' set F
+            F($"0,{Math.Min(E.Length, F.Length) - 1}") = E ^ W5
+            ' For i As Integer = 0 To E.Length && i < F.Length; i++) {
+            '     F[i] = Math.Pow(E[i], W5);
+            ' }
+
+            ' set G
+            G($"0,{E.Length}") = E.SlideWindows(2).Select(Function(w) Math.Log(w(0)) - Math.Log(w(1))).AsList
+            '          For (i = 0; i + 1 < E.length; i++) {
+            '	G[i] = Math.Log(E[i]) - Math.Log(E[i + 1]);
+            '}
+
+            ' set K
+            K($"0,{Math.Min(K.Length, J.Length) - 1}") = J ^ X5
+            '          For (i = 0; i < K.length && i < J.length; i++) {
+            '	K[i] = Math.Pow(J[i], X5);
+            '}
+
+            ' set M
+            M(0) = W5 * (-Math.Log(E(0)))
+            M($"1,{ {M.Length, F.Length, K.Length, G.Length}.Min }") = F * K * W5 * G
+            '          For (i = 0; i + 1 < M.length && i < F.length && i < K.length && i < G.length; i++) {
+            '	M[i + 1] = F[i] * K[i] * W5 * G[i];
+            '}
+
+            ' now we can calculate the risk values
+            Dim fullRisk = M.Where(Function(x) Not x.IsNaNImaginary).Sum
+            '          For (i = 0; i < M.length && !isNaN(M[i]); i++) {
+            '	fullRisk = fullRisk + M[i];
+            '}
+            Return Math.Round(100 * fullRisk)
         End Function
     End Module
 
