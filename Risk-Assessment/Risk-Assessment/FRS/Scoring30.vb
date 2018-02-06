@@ -489,7 +489,10 @@ Namespace FRS
             ' }
 
             ' now we can calculate the risk values
-            Dim fullRisk = M.Where(Function(x) Not x.IsNaNImaginary).Sum
+            Dim fullRisk = Aggregate value As Double
+                           In M
+                           Where Not value.IsNaNImaginary
+                           Into Sum(value)
             ' for (i = 0; i < M.length && !isNaN(M[i]); i++) {
             '     fullRisk = fullRisk + M[i];
             ' }
