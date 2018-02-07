@@ -496,7 +496,7 @@ Namespace FRS
             '     fullRisk = fullRisk + M[i];
             ' }
 
-            Return Math.Round(100 * fullRisk)
+            Return Math.Round(100 * fullRisk, 2)
         End Function
 
         ''' <summary>
@@ -895,7 +895,7 @@ Namespace FRS
             '     hardRisk = hardRisk + M[i];
             ' }
 
-            Return Math.Round(100 * hardRisk)
+            Return Math.Round(100 * hardRisk, 2)
         End Function
     End Module
 End Namespace
