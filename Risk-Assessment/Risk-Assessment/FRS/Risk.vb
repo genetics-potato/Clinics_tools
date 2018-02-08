@@ -35,6 +35,15 @@ Namespace FRS
         Public Property optimalRisk As Double
         Public Property normalRisk As Double
 
+        Sub New()
+        End Sub
+
+        Sub New(copy As Risk)
+            risk = copy.risk
+            optimalRisk = copy.optimalRisk
+            normalRisk = copy.normalRisk
+        End Sub
+
         Public Overrides Function ToString() As String
             Return Me.GetJson
         End Function
