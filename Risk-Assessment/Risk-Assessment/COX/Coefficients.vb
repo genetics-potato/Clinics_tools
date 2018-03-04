@@ -115,15 +115,15 @@ Namespace COX
             Dim csv As csv = Nothing
 
             With App.GetAppSysTempFile(".csv", App.PID)
-                Call model.SaveTo(.ref, strict:=False, encoding:=Encoding.ASCII)
+                Call model.SaveTo(.ByRef, strict:=False, encoding:=Encoding.ASCII)
                 Call csv.SetValue(
-                    File.Load(.ref) _
+                    File.Load(.ByRef) _
                         .Columns _
                         .Select(AddressOf stripNA) _
                         .JoinColumns)
-                Call csv.Save(.ref, Encoding.ASCII)
+                Call csv.Save(.ByRef, Encoding.ASCII)
 
-                Return .ref
+                Return .ByRef
             End With
         End Function
 
@@ -137,6 +137,7 @@ Namespace COX
             End If
         End Function
 
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Private Function stripNA(col As String()) As String()
             Return col _
                 .Select(AddressOf stripNA) _
