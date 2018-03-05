@@ -137,6 +137,7 @@ Namespace COX
             End If
         End Function
 
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
         Private Function stripNA(col As String()) As String()
             Return col _
                 .Select(AddressOf stripNA) _
