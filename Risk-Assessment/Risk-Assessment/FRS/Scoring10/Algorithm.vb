@@ -96,8 +96,8 @@ Namespace FRS
 
         ' Binary search to find "normal" age for the given score
         Private Function calcHeartAge(riskVal As Double, gender As Double) As Double
-            Dim loAge = 10  ' no real minimum bound, but 10 Is a practical one
-            Dim hiAge = 86 ' 85 Is max
+            Dim loAge# = 10  ' no real minimum bound, but 10 Is a practical one
+            Dim hiAge# = 86 ' 85 Is max
             Dim testAge#
             Dim testData = baselineNormalData.copyObject()
 
