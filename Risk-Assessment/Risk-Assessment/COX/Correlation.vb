@@ -6,6 +6,12 @@ Namespace COX
 
         Public Property Name As String
 
+        Public ReadOnly Property RelatedDisease As String()
+            Get
+                Return Properties.Keys.Where(Function(name) Correlation(name) <> 0).ToArray
+            End Get
+        End Property
+
         Public Function Correlation(name As String) As Integer
             Dim value$
 
