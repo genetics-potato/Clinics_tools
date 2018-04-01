@@ -22,14 +22,19 @@ Namespace COX
     ''' </summary>
     Public Module Coefficients
 
+        <MethodImpl(MethodImplOptions.AggressiveInlining)>
+        Public Function Power(b As NamedVector, X As NamedVector) As Double
+            Return Math.Exp((b * X).Sum)
+        End Function
+
         Public Function Hazard(h0#, b As NamedVector, X As NamedVector) As Double
-            Dim ht = h0 * Math.Exp((b * X).Sum)
+            Dim ht = h0 * Power(b, X)
             Return ht
         End Function
 
         Public Function SurvivalProbability(h0#, b As NamedVector, X As NamedVector) As Double
             Dim s0 = 1 - h0
-            Dim st = s0 ^ Math.Exp((b * X).Sum)
+            Dim st = s0 ^ Power(b, X)
             Return st
         End Function
 
@@ -41,8 +46,8 @@ Namespace COX
         ''' <param name="X2"></param>
         ''' <returns></returns>
         Public Function FoldChange(b As NamedVector, X1 As NamedVector, X2 As NamedVector) As Double
-            Dim x = Math.Exp((b * X1).Sum)
-            Dim y = Math.Exp((b * X2).Sum)
+            Dim x = Power(b, X1)
+            Dim y = Power(b, X2)
             Return x / y
         End Function
 
