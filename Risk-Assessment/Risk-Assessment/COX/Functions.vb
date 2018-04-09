@@ -55,7 +55,7 @@ Namespace COX
             Dim points = model.SurvivalModel(offsets)
             Dim curve As New List(Of PointF)
 
-            For Each point In points.SlideWindows(slideWindowSize:=2)
+            For Each point As SlideWindow(Of PointF) In points.SlideWindows(winSize:=2)
                 Dim A = point(0)
                 Dim B = point(1)
 

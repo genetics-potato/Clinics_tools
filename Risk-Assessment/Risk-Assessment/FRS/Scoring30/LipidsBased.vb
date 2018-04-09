@@ -465,7 +465,7 @@ Namespace FRS
 
             ' set G
             G($"0:{E.Length - 1}") = E _
-                .SlideWindows(slideWindowSize:=2) _
+                .SlideWindows(winSize:=2) _
                 .Select(Function(w)
                             Return Math.Log(w(0)) - Math.Log(w(1))
                         End Function) _
