@@ -136,6 +136,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Plots\FoldChangeBar.vb" />
     <Compile Include="Quantify\RangeLocations.vb" />
   </ItemGroup>
   <ItemGroup>
