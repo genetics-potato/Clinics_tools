@@ -41,6 +41,12 @@ Public Module FoldChangeBar
                 .Select(Function(c) New SolidBrush(c)) _
                 .ToArray
 
+            If subset.Length = 0 Then
+                subset = {
+                    New SolidBrush(colors.Last)
+                }
+            End If
+
             Yield (interval.Range, subset)
         Next
     End Function
@@ -70,6 +76,12 @@ Public Module FoldChangeBar
                 ' 到此为止了
                 ' 需要吧当前区间内的颜色给提出来
                 fills += rangeColors.slice(0, range.ScaleMapping(value, {0, len}))
+
+                If fills = 0 Then
+                    ' 数值很小的时候会得不到数据
+                    fills += rangeColors.First
+                End If
+
                 Exit For
             ElseIf value >= range.Max Then
                 fills += rangeColors
