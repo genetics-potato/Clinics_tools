@@ -6,6 +6,7 @@ Imports Microsoft.VisualBasic.Imaging
 Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Imaging.Math2D
+Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
@@ -84,10 +85,17 @@ Public Module FactorCircles
 
                 ' 在中间绘制总得分
                 Dim score$ = Math.Round(factors.beneficials.Values.Sum / sumAll * 100)
-                Dim x = innerRect.Left + (innerRect.Width - g.MeasureString(score, scoreFont).Width) / 2
+                Dim textWidth = g.MeasureString(score, scoreFont).Width
+                Dim x = innerRect.Left + (innerRect.Width - textWidth) / 2
                 Dim y = innerRect.Top + innerRect.Height / 3
 
                 Call g.DrawString(score, scoreFont, Brushes.White, x, y)
+
+                If Val(score) < 70 Then
+                    With New Rectangle(New Point(x + textWidth - innerRadius / 4, innerRect.Top + innerRect.Height / 3), New Size(innerRadius / 3, innerRadius / 3))
+                        Call g.DrawImage(My.Resources.sign_warning_icon, .ByRef)
+                    End With
+                End If
 
                 ' 然后开始绘制圆弧
                 ' 需要计算出开始的弧度
