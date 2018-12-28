@@ -30,7 +30,9 @@ Public Module FactorCircles
                          Optional circleLogo$ = "#504E53",
                          Optional beneficialsColor$ = "#A4D867",
                          Optional detrimentalsColor$ = "#C8004C",
-                         Optional innerCircle! = 0.5) As GraphicsData
+                         Optional innerCircle! = 0.5,
+                         Optional shadowDistance# = 80,
+                         Optional shadowAngle# = 35) As GraphicsData
 
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
@@ -45,6 +47,21 @@ Public Module FactorCircles
                     .Y = center.Y - innerRadius
                 }
                 Dim innerRect As New RectangleF(innerTopLeft, New SizeF(innerRadius * 2, innerRadius * 2))
+                Dim outerTopLeft As New PointF With {
+                    .X = center.X - radius,
+                    .Y = center.Y - radius
+                }
+
+                Dim outerRect = New RectangleF(outerTopLeft, New SizeF(radius * 2, radius * 2))
+
+                ' 首先需要进行阴影的绘制
+                With outerRect.Location.MovePoint(shadowDistance, shadowAngle)
+                    Dim circle As New GraphicsPath
+
+                    Call circle.AddEllipse(.X, .Y, CSng(radius * 2), CSng(radius * 2))
+                    Call circle.CloseAllFigures()
+                    Call g.DropdownShadows(polygon:=circle)
+                End With
 
                 ' 然后绘制中间的logo
                 If circleLogo.FileExists Then
@@ -61,13 +78,6 @@ Public Module FactorCircles
                 ' 根据和来计算出弧度大小
                 Dim beneficials = 360 * factors.beneficials.Values.Sum / sumAll
                 Dim detrimentals = 360 * factors.detrimentals.Values.Sum / sumAll
-
-                Dim outerTopLeft As New PointF With {
-                    .X = center.X - radius,
-                    .Y = center.Y - radius
-                }
-
-                Dim outerRect = New RectangleF(outerTopLeft, New SizeF(radius * 2, radius * 2))
 
                 ' 然后开始绘制圆弧
                 ' 需要计算出开始的弧度
