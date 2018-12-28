@@ -137,6 +137,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Plots\FoldChangeBar.vb" />
+    <Compile Include="Plots\FactorCircles.vb" />
     <Compile Include="Quantify\RangeLocations.vb" />
   </ItemGroup>
   <ItemGroup>
