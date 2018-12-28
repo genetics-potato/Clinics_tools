@@ -7,6 +7,7 @@ Imports Microsoft.VisualBasic.Imaging.Drawing2D
 Imports Microsoft.VisualBasic.Imaging.Driver
 Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Math
+Imports Microsoft.VisualBasic.MIME.Markup.HTML.CSS
 Imports Microsoft.VisualBasic.Scripting.Runtime
 
 Public Module FactorCircles
@@ -24,20 +25,22 @@ Public Module FactorCircles
     ''' 
     <Extension>
     Public Function Plot(factors As Factors,
-                         Optional size$ = "3600,2700",
+                         Optional size$ = "2700,2000",
                          Optional margin$ = g.DefaultPadding,
                          Optional bg$ = "white",
                          Optional circleLogo$ = "#504E53",
                          Optional beneficialsColor$ = "#A4D867",
                          Optional detrimentalsColor$ = "#C8004C",
                          Optional innerCircle! = 0.5,
-                         Optional shadowDistance# = 80,
-                         Optional shadowAngle# = 35) As GraphicsData
+                         Optional shadowDistance# = 120,
+                         Optional shadowAngle# = 45,
+                         Optional scoreFontCSS$ = "font-style: strong; font-size: 300; font-family: " & FontFace.MicrosoftYaHei & ";") As GraphicsData
 
+        Dim scoreFont As Font = CSSFont.TryParse(scoreFontCSS)
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim plotRect As Rectangle = region.PlotRegion
-                Dim radius! = Math.Min(plotRect.Width, plotRect.Height) / 2
+                Dim radius! = Math.Min(plotRect.Width, plotRect.Height) / 2 * 0.95
                 Dim innerRadius = radius * innerCircle
                 Dim center As PointF = plotRect.Centre
 
@@ -55,10 +58,10 @@ Public Module FactorCircles
                 Dim outerRect = New RectangleF(outerTopLeft, New SizeF(radius * 2, radius * 2))
 
                 ' 首先需要进行阴影的绘制
-                With outerRect.Location.MovePoint(shadowDistance, shadowAngle)
+                With outerRect.Location.MovePoint(shadowAngle, shadowDistance)
                     Dim circle As New GraphicsPath
 
-                    Call circle.AddEllipse(.X, .Y, CSng(radius * 2), CSng(radius * 2))
+                    Call circle.AddEllipse(.X, .Y, CSng(radius * 2.05), CSng(radius * 2.05))
                     Call circle.CloseAllFigures()
                     Call g.DropdownShadows(polygon:=circle)
                 End With
@@ -78,6 +81,13 @@ Public Module FactorCircles
                 ' 根据和来计算出弧度大小
                 Dim beneficials = 360 * factors.beneficials.Values.Sum / sumAll
                 Dim detrimentals = 360 * factors.detrimentals.Values.Sum / sumAll
+
+                ' 在中间绘制总得分
+                Dim score$ = Math.Round(factors.beneficials.Values.Sum / sumAll * 100)
+                Dim x = innerRect.Left + (innerRect.Width - g.MeasureString(score, scoreFont).Width) / 2
+                Dim y = innerRect.Top + innerRect.Height / 3
+
+                Call g.DrawString(score, scoreFont, Brushes.White, x, y)
 
                 ' 然后开始绘制圆弧
                 ' 需要计算出开始的弧度
