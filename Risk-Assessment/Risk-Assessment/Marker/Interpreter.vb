@@ -11,18 +11,49 @@ Namespace Marker
         ''' </summary>
         ''' <param name="range">浓度区间定义</param>
         ''' <param name="quantify">定量结果</param>
-        ''' <returns></returns>
+        ''' <param name="scoreEdges">
+        ''' 得分计算的边界点：``[yellow, red]``
         ''' 
+        ''' ```
+        '''     red      yellow      green
+        ''' |---------|----------|-----------|
+        ''' 0     edge:red   edge:yellow   100
+        ''' ```
+        ''' </param>
+        ''' <returns></returns>
         <Extension>
-        Public Function GetDescription(range As IRange, quantify#, mode As InterpreterTypes)
+        Public Function GetDescription(range As IRange,
+                                       quantify#,
+                                       scoreEdges As (yellow#, red#),
+                                       Optional mode As InterpreterTypes = InterpreterTypes.GreenBetter) As Description
+
+            Dim description As (percentage#, location As RangeLocations)
+            Dim score#
+            Dim percentRange As DoubleRange = {0, 100}
+
             Select Case mode
                 Case InterpreterTypes.LowerBetter
-                    Return lowerBetter(range, quantify)
+                    description = lowerBetter(range, quantify)
                 Case InterpreterTypes.HigherBetter
-                    Return higherBetter(range, quantify)
+                    description = higherBetter(range, quantify)
                 Case Else
-                    Return normal(range, quantify)
+                    description = normal(range, quantify)
             End Select
+
+            Select Case description.location
+                Case RangeLocations.Green
+                    score = percentRange.ScaleMapping(description.percentage, {scoreEdges.yellow, 100})
+                Case RangeLocations.HiYellow, RangeLocations.LowYellow
+                    score = percentRange.ScaleMapping(description.percentage, {scoreEdges.red, scoreEdges.yellow})
+                Case Else
+                    score = percentRange.ScaleMapping(description.percentage, {0, scoreEdges.red})
+            End Select
+
+            Return New Description With {
+                .Location = description.location,
+                .Percentage = description.percentage,
+                .Score = score
+            }
         End Function
 
         Private Function lowerBetter(range As IRange, value#) As (percentage#, location As RangeLocations)
