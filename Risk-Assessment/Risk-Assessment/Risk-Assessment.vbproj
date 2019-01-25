@@ -121,6 +121,7 @@
     <Compile Include="FRS\Risk.vb" />
     <Compile Include="FRS\Scoring30\LipidsBased.vb" />
     <Compile Include="Extensions.vb" />
+    <Compile Include="Marker\NamespaceDoc.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -138,7 +139,8 @@
     </Compile>
     <Compile Include="Plots\FoldChangeBar.vb" />
     <Compile Include="Plots\FactorCircles.vb" />
-    <Compile Include="Quantify\RangeLocations.vb" />
+    <Compile Include="Marker\Interpreter.vb" />
+    <Compile Include="Marker\RangeLocations.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
