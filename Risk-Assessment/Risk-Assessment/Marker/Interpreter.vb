@@ -31,6 +31,7 @@ Namespace Marker
             Dim score#
             Dim percentRange As DoubleRange = {0, 100}
 
+            ' 得到的结果的percentage应该是[0, 100]之间的数
             Select Case mode
                 Case InterpreterTypes.LowerBetter
                     description = lowerBetter(range, quantify)
@@ -40,9 +41,11 @@ Namespace Marker
                     description = normal(range, quantify)
             End Select
 
+            ' 得到的得分应该是[0, 100]之间的数
+            ' 所以score会需要乘以100
             Select Case description.location
                 Case RangeLocations.Green
-                    score = percentRange.ScaleMapping(description.percentage, {scoreEdges.yellow, 100})
+                    score = percentRange.ScaleMapping(description.percentage, {scoreEdges.yellow, 1})
                 Case RangeLocations.HiYellow, RangeLocations.LowYellow
                     score = percentRange.ScaleMapping(description.percentage, {scoreEdges.red, scoreEdges.yellow})
                 Case Else
@@ -52,19 +55,19 @@ Namespace Marker
             Return New Description With {
                 .Location = description.location,
                 .Percentage = description.percentage,
-                .Score = score
+                .Score = score * 100
             }
         End Function
 
         Private Function lowerBetter(range As IRange, value#) As (percentage#, location As RangeLocations)
             If value <= range.Green.Min Then
-                Return (1, RangeLocations.Green)
+                Return (100, RangeLocations.Green)
             ElseIf range.Green.IsInside(value) Then
-                Return (range.Green.Percentage(value), RangeLocations.Green)
+                Return (range.Green.Percentage(value) * 100, RangeLocations.Green)
             ElseIf range.Yellow.IsInside(value) Then
-                Return (range.Yellow.Percentage(value), RangeLocations.HiYellow)
+                Return (range.Yellow.Percentage(value) * 100, RangeLocations.HiYellow)
             ElseIf range.Red.IsInside(value) Then
-                Return (range.Red.Percentage(value), RangeLocations.HiRed)
+                Return (range.Red.Percentage(value) * 100, RangeLocations.HiRed)
             Else
                 Return (0, RangeLocations.HiRed)
             End If
