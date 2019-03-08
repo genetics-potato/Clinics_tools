@@ -144,6 +144,12 @@ Public Structure Factors
     ''' </summary>
     Dim detrimentals As NamedValue(Of Double)()
 
+    Public ReadOnly Property IsEmpty As Boolean
+        Get
+            Return beneficials.Length = 0 AndAlso detrimentals.Length = 0
+        End Get
+    End Property
+
     Public ReadOnly Property SumAll As Double
         Get
             Return beneficials.Values.Sum + detrimentals.Values.Sum
