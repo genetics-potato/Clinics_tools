@@ -148,6 +148,10 @@ Namespace Marker
         ''' <returns></returns>
         Public Property Score As Double
 
+        Public Overrides Function ToString() As String
+            Return $"{Score} ({Location}: {Percentage.ToString("F2")}%)"
+        End Function
+
     End Class
 
     Public Interface IRange
