@@ -77,9 +77,9 @@ Namespace Marker
 
             ' 这里的百分比描述的是数据的偏离性
             '
-            ' | red_low | yellow_low |   green   | yellow_hi | red_hi |
-            ' 1 <----- 0 1 <------- 0 1 <- 0 -> 1  0 -----> 1  0 ---> 1 
-
+            ' | red_low | yellow_low |    green    | yellow_hi | red_hi |
+            ' 1 <----- 0|1 <------- 0|1 <-- 0 --> 1| 0 -----> 1| 0 ---> 1 
+            '
             If rl.IsInside(value) OrElse value <= rl.Min Then
                 ' 定量结果值已经远远小于最低值了
                 If value <= rl.Min Then
