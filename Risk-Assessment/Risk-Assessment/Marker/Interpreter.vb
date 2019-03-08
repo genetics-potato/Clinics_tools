@@ -57,7 +57,17 @@ Namespace Marker
         End Function
 
         Private Function lowerBetter(range As IRange, value#) As (percentage#, location As RangeLocations)
-
+            If value <= range.Green.Min Then
+                Return (1, RangeLocations.Green)
+            ElseIf range.Green.IsInside(value) Then
+                Return (range.Green.Percentage(value), RangeLocations.Green)
+            ElseIf range.Yellow.IsInside(value) Then
+                Return (range.Yellow.Percentage(value), RangeLocations.HiYellow)
+            ElseIf range.Red.IsInside(value) Then
+                Return (range.Red.Percentage(value), RangeLocations.HiRed)
+            Else
+                Return (0, RangeLocations.HiRed)
+            End If
         End Function
 
         Private Function higherBetter(range As IRange, value#) As (percentage#, location As RangeLocations)
