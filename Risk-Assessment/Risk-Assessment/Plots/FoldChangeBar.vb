@@ -180,6 +180,7 @@ Public Module FoldChangeBar
                 Dim barHeight! = (boxHeight / (values.Length + 1)) * 0.8
                 Dim dy = (boxHeight - values.Length * barHeight) / (values.Length + 1)
                 Dim samples As New SampleDistribution(Vector.Abs(values.Values.AsVector))
+                Dim maxValue = {samples.max, colorIntervals.Max}.Max
                 Dim barRibbon As SolidBrush()
                 Dim dx!
                 Dim barFragment As RectangleF
@@ -197,14 +198,14 @@ Public Module FoldChangeBar
                     g.DrawString(sample.Name, labelFont, Brushes.Black, New PointF(x, y))
 
                     ' 绘制图表数据
-                    barWidth = Math.Abs(sample.Value) / samples.max * boxWidth
+                    barWidth = Math.Abs(sample.Value) / maxValue * boxWidth
                     x = boxMiddle
 
                     ' 确定颜色
                     barRibbon = colorRanges _
                         .getColors(Math.Abs(sample.Value)) _
                         .ToArray
-                    dx = colorIntervals.Max / samples.max * boxWidth
+                    dx = colorIntervals.Max / maxValue * boxWidth
                     dx = dx / colorlevels - 1
 
                     If sample.Value = 0# Then
@@ -283,7 +284,7 @@ Public Module FoldChangeBar
 
                 ' 绘制标尺
                 For Each tick As Double In colorIntervals
-                    dx = tick / samples.max * boxWidth
+                    dx = tick / maxValue * boxWidth
 
                     ' 左右两边都要同时绘制标尺标记
                     ' 右边

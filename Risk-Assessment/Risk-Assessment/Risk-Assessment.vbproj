@@ -121,6 +121,7 @@
     <Compile Include="FRS\Risk.vb" />
     <Compile Include="FRS\Scoring30\LipidsBased.vb" />
     <Compile Include="Extensions.vb" />
+    <Compile Include="Marker\NamespaceDoc.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -137,7 +138,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Plots\FoldChangeBar.vb" />
-    <Compile Include="Quantify\RangeLocations.vb" />
+    <Compile Include="Plots\FactorCircles.vb" />
+    <Compile Include="Marker\Interpreter.vb" />
+    <Compile Include="Marker\RangeLocations.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -179,9 +182,13 @@
       <Project>{FC125B0D-1942-496F-B502-9C0EB80E35B6}</Project>
       <Name>DataFittings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math\math-core.vbproj">
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Mathematica\Math\Math\Math-core.vbproj">
       <Project>{e3367b88-5d0c-495a-8273-331656d4b5aa}</Project>
-      <Name>math-core</Name>
+      <Name>Math-core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Visualization\Plots-statistics\Plots.Statistics.vbproj">
+      <Project>{368ee92f-7aa0-47df-be48-2ae150369a4c}</Project>
+      <Name>Plots.Statistics</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data_science\Visualization\Plots\Plots.vbproj">
       <Project>{17f8e821-0a01-4975-9caa-ac95251226d5}</Project>
@@ -199,6 +206,9 @@
       <Project>{2dd4be80-ddc3-4767-94a7-10f1c3395716}</Project>
       <Name>MIME-htmls</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sign-warning-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
