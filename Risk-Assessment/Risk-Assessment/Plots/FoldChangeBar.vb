@@ -212,7 +212,7 @@ Public Module FoldChangeBar
                         ' 零，则在中线上画一条线
                         barFragment = New Rectangle(boxMiddle - 1, y, 2, barHeight)
 
-                        Call g.DropdownShadows(barFragment.Move(shadowDistance, shadowAngle))
+                        Call Shadow.DropdownShadows(g, barFragment.Move(shadowDistance, shadowAngle))
                         Call g.FillRectangle(Brushes.Black, barFragment)
                     Else
 
@@ -237,7 +237,7 @@ Public Module FoldChangeBar
                             }
                         End If
 
-                        Call g.DropdownShadows(barFragment.Move(shadowDistance, shadowAngle))
+                        Call Shadow.DropdownShadows(g, barFragment.Move(shadowDistance, shadowAngle))
 
                         For i As Integer = 0 To barRibbon.Length - 1
                             barFragment = New RectangleF With {

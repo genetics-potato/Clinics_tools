@@ -64,7 +64,7 @@ Public Module FactorCircles
 
                     Call circle.AddEllipse(.X, .Y, CSng(radius * 2.05), CSng(radius * 2.05))
                     Call circle.CloseAllFigures()
-                    Call g.DropdownShadows(polygon:=circle)
+                    Call Shadow.DropdownShadows(g, polygon:=circle)
                 End With
 
                 ' 然后绘制中间的logo
