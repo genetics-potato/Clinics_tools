@@ -1,5 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports System.Text
+Imports Microsoft.VisualBasic.ApplicationServices
 Imports Microsoft.VisualBasic.Data.csv
 Imports Microsoft.VisualBasic.Data.csv.IO
 Imports Microsoft.VisualBasic.Language
@@ -119,7 +120,7 @@ Namespace COX
         Private Function tempData(model As Model()) As String
             Dim csv As csv = Nothing
 
-            With App.GetAppSysTempFile(".csv", App.PID)
+            With TempFileSystem.GetAppSysTempFile(".csv", App.PID)
                 Call model.SaveTo(.ByRef, strict:=False, encoding:=Encoding.ASCII)
                 Call csv.SetValue(
                     File.Load(.ByRef) _
