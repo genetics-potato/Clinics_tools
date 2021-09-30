@@ -38,7 +38,7 @@ Public Module FactorCircles
                          Optional shadowAngle# = 45,
                          Optional scoreFontCSS$ = "font-style: strong; font-size: 300; font-family: " & FontFace.MicrosoftYaHei & ";") As GraphicsData
 
-        Dim scoreFont As Font = CSSFont.TryParse(scoreFontCSS)
+        Dim scoreFont As Font = CSSFont.TryParse(scoreFontCSS).GDIObject(100)
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim plotRect As Rectangle = region.PlotRegion

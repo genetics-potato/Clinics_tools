@@ -143,11 +143,11 @@ Public Module FoldChangeBar
             .createColorIntervals(colorIntervals, schemaReverse) _
             .ToArray
         Dim values As NamedValue(Of Double)() = data.ToArray
-        Dim labelFont As Font = CSSFont.TryParse(labelFontCSS)
+        Dim labelFont As Font = CSSFont.TryParse(labelFontCSS).GDIObject(100)
         Dim boxStroke As Pen = Stroke.TryParse(boxBorderCSS)
         Dim referencePen As Pen = Stroke.TryParse(referenceStroke)
-        Dim titleFont As Font = CSSFont.TryParse(titleFontCSS)
-        Dim tickFont As Font = CSSFont.TryParse(tickFontCSS)
+        Dim titleFont As Font = CSSFont.TryParse(titleFontCSS).GDIObject(100)
+        Dim tickFont As Font = CSSFont.TryParse(tickFontCSS).GDIObject(100)
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
 
