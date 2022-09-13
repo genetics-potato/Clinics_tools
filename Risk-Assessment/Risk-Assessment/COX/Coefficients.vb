@@ -62,42 +62,42 @@ Namespace COX
         ''' <returns></returns>
         <Extension>
         Public Function Training(model As IEnumerable(Of Model), Optional project$() = Nothing, Optional names As Dictionary(Of String, String) = Nothing) As Dictionary(Of String, Double)
-            Dim keys$() = project Or model.First.Properties.Keys.ToArray.AsDefault
-            Dim table As Model() = model _
-                .Select(Function(m)
-                            Return m.Project(names:=keys)
-                        End Function) _
-                .ToArray
-            Dim data = read.csv(file:=table.tempData)
+            'Dim keys$() = project Or model.First.Properties.Keys.ToArray.AsDefault
+            'Dim table As Model() = model _
+            '    .Select(Function(m)
+            '                Return m.Project(names:=keys)
+            '            End Function) _
+            '    .ToArray
+            'Dim data = read.csv(file:=table.tempData)
 
-            ' R server code
-            ' 进行COX模型的回归训练
-            require("survival")
+            '' R server code
+            '' 进行COX模型的回归训练
+            'require("survival")
 
-            ' 回归模型的方程
-            ' formula <- Surv(time, status) ~ taxonomy1 + taxonomy2 + ... - 1
-            Dim factors$ = table(Scan0) _
-                .Properties _
-                .Keys _
-                .JoinBy(" + " & ASCII.LF)
-            Dim formula$ = $"Surv(time, status) ~ {factors} - 1"
-            Dim cox = survival.coxph(formula, data:=data)
-            Dim coeff = survival.GetCoefficients(cox)
+            '' 回归模型的方程
+            '' formula <- Surv(time, status) ~ taxonomy1 + taxonomy2 + ... - 1
+            'Dim factors$ = table(Scan0) _
+            '    .Properties _
+            '    .Keys _
+            '    .JoinBy(" + " & ASCII.LF)
+            'Dim formula$ = $"Surv(time, status) ~ {factors} - 1"
+            'Dim cox = survival.coxph(formula, data:=data)
+            'Dim coeff = survival.GetCoefficients(cox)
 
-            With names Or table.factorNames.AsDefault
+            'With names Or table.factorNames.AsDefault
 
-                ' 还需要对字符串做一下额外的处理
-                ' 因为R会自动对非法字符做一些转换，在这里需要将
-                ' 属性名字之中的非法字符都转换回来
-                coeff = .ToDictionary(Function(t) t.Value,
-                                      Function(t)
-                                          Dim id$ = t.Key.AsRid
-                                          Return coeff(id)
-                                      End Function)
-            End With
+            '    ' 还需要对字符串做一下额外的处理
+            '    ' 因为R会自动对非法字符做一些转换，在这里需要将
+            '    ' 属性名字之中的非法字符都转换回来
+            '    coeff = .ToDictionary(Function(t) t.Value,
+            '                          Function(t)
+            '                              Dim id$ = t.Key.AsRid
+            '                              Return coeff(id)
+            '                          End Function)
+            'End With
 
-            ' 返回相关性因子
-            Return coeff
+            '' 返回相关性因子
+            'Return coeff
         End Function
 
         ''' <summary>

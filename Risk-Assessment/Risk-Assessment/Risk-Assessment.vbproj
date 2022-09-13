@@ -13,11 +13,6 @@
     <AssemblyName>SMRUCC.Clinic.RiskAssessment</AssemblyName>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="COX\**" />
-    <EmbeddedResource Remove="COX\**" />
-    <None Remove="COX\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\LICENSE">
