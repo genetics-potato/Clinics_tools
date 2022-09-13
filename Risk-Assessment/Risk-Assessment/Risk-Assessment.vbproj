@@ -10,6 +10,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <AssemblyName>SMRUCC.Clinic.RiskAssessment</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
