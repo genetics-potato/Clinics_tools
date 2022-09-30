@@ -32,15 +32,16 @@ Namespace COX
             Dim n%
             Dim timeRange As DoubleRange
             Dim lastRange As Double
+            Dim timestamp As Double
+            Dim pct As Double
 
             cat("\n\n")
 
-            For Each time As (time#, pct#) In pcts _
-                .OrderBy(Function(t) t.Key) _
-                .EnumerateTuples
-
-                timeRange = {timeBegin, time.time}
-                n = sampleSize * time.pct
+            For Each time As KeyValuePair(Of Double, Double) In pcts.OrderBy(Function(t) t.Key)
+                timestamp = time.Key
+                pct = time.Value
+                timeRange = {timeBegin, timestamp}
+                n = sampleSize * pct
 
                 For i As Integer = 0 To n - 1
                     Dim individual As New Model With {
@@ -53,7 +54,7 @@ Namespace COX
                 Next
 
                 lastRange = timeBegin
-                timeBegin = time.time
+                timeBegin = timestamp
                 sampleSize -= n
 
                 ' 为了进行分隔，在所打印的消息后面是有一个空格的
