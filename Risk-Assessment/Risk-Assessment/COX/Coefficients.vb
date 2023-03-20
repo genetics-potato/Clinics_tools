@@ -122,7 +122,7 @@ Namespace COX
 
             With TempFileSystem.GetAppSysTempFile(".csv", App.PID)
                 Call model.SaveTo(.ByRef, strict:=False, encoding:=Encoding.ASCII)
-                Call csv.SetValue(
+                Call csv.InlineCopy(
                     File.Load(.ByRef) _
                         .Columns _
                         .Select(AddressOf stripNA) _
