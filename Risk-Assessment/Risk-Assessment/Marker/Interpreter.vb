@@ -29,7 +29,7 @@ Namespace Marker
 
             Dim description As (percentage#, location As RangeLocations)
             Dim score#
-            Dim percentRange As DoubleRange = {0, 100}
+            Dim percentRange As DoubleRange = New Double() {0, 100}
 
             ' 得到的结果的percentage应该是[0, 100]之间的数
             Select Case mode

@@ -26,8 +26,8 @@ Public Module FoldChangeBar
         Dim max As Double = colorIntervals.Max
         Dim n As Integer = colors.Length
         Dim subset As SolidBrush()
-        Dim intervalRange As DoubleRange = {0, max}
-        Dim countRange As DoubleRange = {0, n}
+        Dim intervalRange As DoubleRange = New Double() {0, max}
+        Dim countRange As DoubleRange = New Double() {0, n}
         Dim a, b As Integer
 
         If reverseSchema Then
@@ -62,7 +62,7 @@ Public Module FoldChangeBar
     Private Function getColors(colors As (range As DoubleRange, colors As SolidBrush())(), value#) As IEnumerable(Of SolidBrush)
         Dim fills As New List(Of SolidBrush)
         Dim len%
-        Dim normalRange As DoubleRange = {0, 1}
+        Dim normalRange As DoubleRange = New Double() {0, 1}
         Dim range As DoubleRange
         Dim rangeColors As SolidBrush()
 
@@ -76,7 +76,7 @@ Public Module FoldChangeBar
             If range.IsInside(value) Then
                 ' 到此为止了
                 ' 需要吧当前区间内的颜色给提出来
-                fills += rangeColors.slice(0, range.ScaleMapping(value, {0, len}))
+                fills += rangeColors.slice(0, range.ScaleMapping(value, New Double() {0, len}))
 
                 If fills = 0 Then
                     ' 数值很小的时候会得不到数据
