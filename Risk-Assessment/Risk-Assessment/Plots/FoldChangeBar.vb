@@ -13,6 +13,7 @@ Imports Microsoft.VisualBasic.Language.Python
 Imports Microsoft.VisualBasic.Math.Distributions
 Imports Microsoft.VisualBasic.Math.LinearAlgebra
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports Microsoft.VisualBasic.Scripting.Runtime
 
 ''' <summary>
@@ -143,14 +144,15 @@ Public Module FoldChangeBar
             .createColorIntervals(colorIntervals, schemaReverse) _
             .ToArray
         Dim values As NamedValue(Of Double)() = data.ToArray
-        Dim labelFont As Font = CSSFont.TryParse(labelFontCSS).GDIObject(100)
         Dim boxStroke As Pen = Stroke.TryParse(boxBorderCSS)
         Dim referencePen As Pen = Stroke.TryParse(referenceStroke)
-        Dim titleFont As Font = CSSFont.TryParse(titleFontCSS).GDIObject(100)
-        Dim tickFont As Font = CSSFont.TryParse(tickFontCSS).GDIObject(100)
+
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
-
+                Dim css As CSSEnvirnment = g.LoadEnvironment
+                Dim labelFont As Font = css.GetFont(CSSFont.TryParse(labelFontCSS))
+                Dim titleFont As Font = css.GetFont(CSSFont.TryParse(titleFontCSS))
+                Dim tickFont As Font = css.GetFont(CSSFont.TryParse(tickFontCSS))
                 ' 首先确定右边的边框的位置
                 Dim rect As Rectangle = region.PlotRegion
                 Dim maxLabel$ = values.Keys.MaxLengthString

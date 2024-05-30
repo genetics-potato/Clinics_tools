@@ -10,6 +10,7 @@ Imports Microsoft.VisualBasic.Imaging.Math2D
 Imports Microsoft.VisualBasic.Language
 Imports Microsoft.VisualBasic.Math
 Imports Microsoft.VisualBasic.MIME.Html.CSS
+Imports Microsoft.VisualBasic.MIME.Html.Render
 Imports Microsoft.VisualBasic.Scripting.Runtime
 
 Public Module FactorCircles
@@ -38,13 +39,14 @@ Public Module FactorCircles
                          Optional shadowAngle# = 45,
                          Optional scoreFontCSS$ = "font-style: strong; font-size: 300; font-family: " & FontFace.MicrosoftYaHei & ";") As GraphicsData
 
-        Dim scoreFont As Font = CSSFont.TryParse(scoreFontCSS).GDIObject(100)
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
                 Dim plotRect As Rectangle = region.PlotRegion
                 Dim radius! = Math.Min(plotRect.Width, plotRect.Height) / 2 * 0.95
                 Dim innerRadius = radius * innerCircle
                 Dim center As PointF = plotRect.Centre
+                Dim css As CSSEnvirnment = g.LoadEnvironment
+                Dim scoreFont As Font = css.GetFont(CSSFont.TryParse(scoreFontCSS))
 
                 ' 首先确定内圈的位置
                 Dim innerTopLeft As New PointF With {
