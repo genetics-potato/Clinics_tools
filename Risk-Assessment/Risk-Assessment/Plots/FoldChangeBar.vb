@@ -144,8 +144,6 @@ Public Module FoldChangeBar
             .createColorIntervals(colorIntervals, schemaReverse) _
             .ToArray
         Dim values As NamedValue(Of Double)() = data.ToArray
-        Dim boxStroke As Pen = Stroke.TryParse(boxBorderCSS)
-        Dim referencePen As Pen = Stroke.TryParse(referenceStroke)
 
         Dim plotInternal =
             Sub(ByRef g As IGraphics, region As GraphicsRegion)
@@ -153,6 +151,8 @@ Public Module FoldChangeBar
                 Dim labelFont As Font = css.GetFont(CSSFont.TryParse(labelFontCSS))
                 Dim titleFont As Font = css.GetFont(CSSFont.TryParse(titleFontCSS))
                 Dim tickFont As Font = css.GetFont(CSSFont.TryParse(tickFontCSS))
+                Dim boxStroke As Pen = css.GetPen(Stroke.TryParse(boxBorderCSS))
+                Dim referencePen As Pen = css.GetPen(Stroke.TryParse(referenceStroke))
                 ' 首先确定右边的边框的位置
                 Dim rect As Rectangle = region.PlotRegion
                 Dim maxLabel$ = values.Keys.MaxLengthString
